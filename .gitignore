@@ -35,4 +35,4 @@ desktop.ini
 .DS_Store
 
 # ---------- 可选：Drivers 要不要提交？见下方说明 ----------
-# Drivers/
+# Drivers/*.log
