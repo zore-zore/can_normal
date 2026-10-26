@@ -1,0 +1,38 @@
+# ---------- Keil MDK 编译产物 ----------
+MDK-ARM/Objects/
+MDK-ARM/Listings/
+MDK-ARM/DebugConfig/
+MDK-ARM/RTE/
+*.o
+*.d
+*.crf
+*.axf
+*.hex
+*.bin
+*.elf
+*.map
+*.lst
+*.lnp
+*.dep
+*.htm
+*.build_log.htm
+*.iex
+*.sct
+*.scvd
+*.uvguix.*
+*.uvoptx
+JLinkLog.txt
+*.bak
+
+# ---------- IDE / 编辑器 ----------
+.vscode/
+.claude/
+*.code-workspace
+
+# ---------- 系统 ----------
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# ---------- 可选：Drivers 要不要提交？见下方说明 ----------
+# Drivers/
