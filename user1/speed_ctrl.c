@@ -29,7 +29,7 @@ void Speed_Ctrl_Init(void)
     }
 }
 
-void Speed_Ctrl_Reset(void)
+void Speed_Ctrl_Reset(void)  //初始化
 {
     uint8_t i;
 

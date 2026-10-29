@@ -31,7 +31,7 @@ static void dr16_parse(const uint8_t *buf, dr16_ctrl_t *ctrl)
     ctrl->ch[4] = (int16_t)((int16_t)(buf[16] | (buf[17] << 8)) - DR16_CH_VALUE_MID);
 }
 
-void Dr16_Init(void)
+void Dr16_Init(void)  
 {
     HAL_NVIC_DisableIRQ(USART3_IRQn);
 
@@ -58,7 +58,7 @@ void Dr16_Init(void)
     HAL_NVIC_EnableIRQ(USART3_IRQn);
 }
 
-void Dr16_Irq_Handler(void)
+void Dr16_Irq_Handler(void)   
 {
     uint32_t length;
 
@@ -141,48 +141,6 @@ const dr16_ctrl_t *Dr16_Get(void)
 uint8_t Dr16_Is_Online(void)
 {
     return dr16_online;
-}
-
-static int32_t dr16_normalize(int16_t ch, int32_t full_milli)
-{
-    int32_t milli;
-
-    if ((ch > -DR16_DEAD_ZONE) && (ch < DR16_DEAD_ZONE))
-    {
-        return 0;
-    }
-
-    milli = ((int32_t)ch * full_milli) / DR16_CH_RANGE;
-
-    if (milli > full_milli)
-    {
-        milli = full_milli;
-    }
-    else if (milli < -full_milli)
-    {
-        milli = -full_milli;
-    }
-
-    return milli;
-}
-
-int16_t Dr16_Get_Channel_Milli_Scaled(uint8_t index, int16_t full_milli)
-{
-    const dr16_ctrl_t *ctrl;
-
-    if (index >= DR16_CH_COUNT)
-    {
-        return 0;
-    }
-
-    ctrl = Dr16_Get();
-
-    return (int16_t)dr16_normalize(ctrl->ch[index], full_milli);
-}
-
-int16_t Dr16_Get_Channel_Milli(uint8_t index)
-{
-    return Dr16_Get_Channel_Milli_Scaled(index, 1000);
 }
 
 /* 归一化：轴值除以 660，保留两位小数，第三位四舍五入；小于 0.5% 自然归零 */

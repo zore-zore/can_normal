@@ -6,13 +6,16 @@
 #include "dr16.h"
 #include "speed_ctrl.h"
 
-#define CAN_ASSIST_CH_FORWARD   3U
-#define CAN_ASSIST_CH_STRAFE    2U
+#define CAN_ASSIST_CH_FORWARD   3U   //左摇杆前后
+#define CAN_ASSIST_CH_STRAFE    2U   //左摇杆左右
+#define CAN_ASSIST_CH_FORWARD_R 1U   //右摇杆前后
+#define CAN_ASSIST_CH_ROTATE    0U   //右摇杆左右
 #define CAN_ASSIST_CURRENT_MAX  1000  //转速满量程
-#define CAN_ASSIST_PERIOD_MS    1U
+#define CAN_ASSIST_PERIOD_MS    1U  
 
-static const int8_t can_assist_dir[4] = {1, 1, -1, -1};
-static const int8_t can_assist_strafe_dir[4] = {1, -1, -1, 1};
+static const int8_t can_assist_dir[4] = {1, 1, -1, -1};   //逆运动学方向系数，顺序为前左、前右、后左、后右
+static const int8_t can_assist_strafe_dir[4] = {1, -1, -1, 1};   //逆运动学方向系数，顺序为前左、前右、后左、后右
+static const int8_t can_assist_rotate_dir[4] = {1, 1, 1, 1};   //逆运动学方向系数，顺序为前左、前右、后左、后右
 static uint32_t can_assist_last_tick;
 static volatile uint8_t can_assist_enabled;
 static uint8_t can_assist_was_online;
@@ -30,6 +33,7 @@ void Can_Assist_Control(void)
 {
     int32_t forward;
     int32_t strafe;
+    int32_t rotate;
     int32_t mix[4];
     uint8_t i;
 
@@ -60,11 +64,21 @@ void Can_Assist_Control(void)
                         * (float)CAN_ASSIST_CURRENT_MAX);
     strafe = (int32_t)(Dr16_Get_Channel_Norm(CAN_ASSIST_CH_STRAFE)
                        * (float)CAN_ASSIST_CURRENT_MAX);
+    rotate = 0;
+
+    if ((forward == 0) && (strafe == 0))  //左侧优先，左杆有动作时不响应右杆
+    {
+        forward = (int32_t)(Dr16_Get_Channel_Norm(CAN_ASSIST_CH_FORWARD_R)
+                            * (float)CAN_ASSIST_CURRENT_MAX);
+        rotate = (int32_t)(Dr16_Get_Channel_Norm(CAN_ASSIST_CH_ROTATE)
+                           * (float)CAN_ASSIST_CURRENT_MAX);
+    }
 
     for (i = 0U; i < 4U; i++)  //逆运动学
     {
         mix[i] = forward * can_assist_dir[i]   //逆运动学计算
-                 + strafe * can_assist_strafe_dir[i];    //逆运动学计算
+                 + strafe * can_assist_strafe_dir[i]    //逆运动学计算
+                 + rotate * can_assist_rotate_dir[i];    //逆运动学计算
 
         if (mix[i] > CAN_ASSIST_CURRENT_MAX) // 保护程序
         {

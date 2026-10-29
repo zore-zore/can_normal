@@ -55,8 +55,6 @@ void Dr16_Task(void);
 
 const dr16_ctrl_t *Dr16_Get(void);
 uint8_t Dr16_Is_Online(void);
-int16_t Dr16_Get_Channel_Milli(uint8_t index);
-int16_t Dr16_Get_Channel_Milli_Scaled(uint8_t index, int16_t full_milli);
 int16_t Dr16_Get_Channel_Centi(uint8_t index);
 float Dr16_Get_Channel_Norm(uint8_t index);
 uint8_t Dr16_Get_Switch(uint8_t index);
