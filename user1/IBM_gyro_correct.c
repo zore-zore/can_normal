@@ -4,8 +4,9 @@
 #include "dr16.h"
 
 #define GYRO_CORRECT_Z_DIR          (1.0f)
-#define GYRO_CORRECT_SAMPLE_MS      5U
-#define GYRO_CORRECT_BIAS_SAMPLES   100U
+#define GYRO_CORRECT_SAMPLE_MS      5U      //陀螺仪采样周期，单位ms
+#define GYRO_CORRECT_BIAS_SAMPLES   230U   //陀螺仪采样230次，用于基准点
+#define GYRO_CORRECT_BIAS_SKIP      70U    //陀螺仪采样前70次数据不要
 #define GYRO_CORRECT_LPF_ALPHA      0.611f
 #define GYRO_CORRECT_RATE_MAX       20.0f
 #define GYRO_CORRECT_FORWARD_MIN    100
@@ -24,7 +25,7 @@ static float gyro_correct_ramp;
 static uint8_t gyro_correct_ready;
 static uint8_t gyro_correct_run;
 
-static float gyro_correct_read(void)
+static float gyro_correct_read(void)  //BMI088 刚读出来的三轴角速度
 {
     fp32 gyro[3];
     fp32 accel[3];
@@ -36,7 +37,7 @@ static float gyro_correct_read(void)
     return gyro_correct_lpf;
 }
 
-void Gyro_Correct_Init(void)
+void Gyro_Correct_Init(void)  //陀螺仪自转修正初始化，基准点校正
 {
     float sum = 0.0f;
     uint16_t i;
@@ -54,13 +55,20 @@ void Gyro_Correct_Init(void)
         return;
     }
 
-    for (i = 0U; i < GYRO_CORRECT_BIAS_SAMPLES; i++)
+    for (i = 0U; i < GYRO_CORRECT_BIAS_SAMPLES; i++)   //采样次数的计数器
     {
         HAL_Delay(GYRO_CORRECT_SAMPLE_MS);
-        sum += gyro_correct_read();
+        if  (i<GYRO_CORRECT_BIAS_SKIP )
+        {
+            (void)gyro_correct_read();   //前70次采集不计入平均值，避免陀螺仪刚启动时的漂移
+        }
+        else
+        {
+            sum += gyro_correct_read();   //每次采集相加
+        }
     }
 
-    gyro_correct_bias = sum / (float)GYRO_CORRECT_BIAS_SAMPLES;
+    gyro_correct_bias = sum / (float)(GYRO_CORRECT_BIAS_SAMPLES - GYRO_CORRECT_BIAS_SKIP);
     gyro_correct_ready = 1U;
 }
 
@@ -112,8 +120,8 @@ int32_t Gyro_Correct_Update(uint8_t stick_right_active, int32_t forward, int32_t
 
     want_run = 0U;
 
-    if ((stick_right_active != 0U)
-        && (rotate == 0)
+    if ((stick_right_active != 0U)   //rotate自转容器，forward向前容器，右杆有动作时不响应左杆
+        && (rotate == 0)    
         && ((forward >= GYRO_CORRECT_FORWARD_MIN) || (forward <= -GYRO_CORRECT_FORWARD_MIN))
         && (Dr16_Is_Online() != 0U))
     {
@@ -145,7 +153,7 @@ int32_t Gyro_Correct_Update(uint8_t stick_right_active, int32_t forward, int32_t
         }
     }
 
-    if (gyro_correct_ramp <= 0.0f)
+    if (gyro_correct_ramp <= 0.0f)   //PI 计算
     {
         return 0;
     }

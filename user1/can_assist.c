@@ -14,7 +14,7 @@
 #define CAN_ASSIST_CURRENT_MAX  1000  //转速满量程
 #define CAN_ASSIST_PERIOD_MS    1U  
 
-static const int8_t can_assist_dir[4] = {1, 1, -1, -1};   //逆运动学方向系数，顺序为前左、前右、后左、后右
+static const int8_t can_assist_dir[4] = {1, 1, -1, -1};   //顺序为左上、左下、右下、右上。电调id：左上1，左下2，右上4，右下3。
 static const int8_t can_assist_strafe_dir[4] = {1, -1, -1, 1};   //逆运动学方向系数，顺序为前左、前右、后左、后右
 static const int8_t can_assist_rotate_dir[4] = {1, 1, 1, 1};   //逆运动学方向系数，顺序为前左、前右、后左、后右
 static uint32_t can_assist_last_tick;
@@ -79,10 +79,17 @@ void Can_Assist_Control(void)
                             * (float)CAN_ASSIST_CURRENT_MAX);
         rotate = (int32_t)(Dr16_Get_Channel_Norm(CAN_ASSIST_CH_ROTATE)
                            * (float)CAN_ASSIST_CURRENT_MAX);
+        if  (rotate <= (float)CAN_ASSIST_CURRENT_MAX * 0.5F && rotate >= -(float)CAN_ASSIST_CURRENT_MAX * 0.5F) 
+         //右杆自转死区,实现右杆前后优先
+        {
+            rotate = 0;
+        }
+        else
+        {
+            rotate = rotate / 2; //右杆自转量减半，避免过快，不能避免突变
+        }
         right_active = 1U;
 
-
-        
     }
 
     
