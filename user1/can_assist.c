@@ -5,6 +5,7 @@
 #include "CAN_receive.h"
 #include "dr16.h"
 #include "speed_ctrl.h"
+#include "IBM_gyro_correct.h"
 
 #define CAN_ASSIST_CH_FORWARD   3U   //左摇杆前后
 #define CAN_ASSIST_CH_STRAFE    2U   //左摇杆左右
@@ -20,8 +21,9 @@ static uint32_t can_assist_last_tick;
 static volatile uint8_t can_assist_enabled;
 static uint8_t can_assist_was_online;
 
-void Can_Assist_Init(void)
+void Can_Assist_Init(void)    
 {
+    Gyro_Correct_Init();
     can_filter_init();
     Speed_Ctrl_Init();
     can_assist_last_tick = HAL_GetTick() - CAN_ASSIST_PERIOD_MS;
@@ -35,6 +37,8 @@ void Can_Assist_Control(void)
     int32_t strafe;
     int32_t rotate;
     int32_t mix[4];
+    int32_t corr;
+    uint8_t right_active;
     uint8_t i;
 
     if (can_assist_enabled == 0U)
@@ -60,11 +64,14 @@ void Can_Assist_Control(void)
 
     can_assist_was_online = 1U;
 
-    forward = (int32_t)(Dr16_Get_Channel_Norm(CAN_ASSIST_CH_FORWARD) //通过遥控器比例，调转速大小
+    forward = (int32_t)(Dr16_Get_Channel_Norm(CAN_ASSIST_CH_FORWARD) //左杆前后
                         * (float)CAN_ASSIST_CURRENT_MAX);
-    strafe = (int32_t)(Dr16_Get_Channel_Norm(CAN_ASSIST_CH_STRAFE)
+    strafe = (int32_t)(Dr16_Get_Channel_Norm(CAN_ASSIST_CH_STRAFE)  //左杆左右
                        * (float)CAN_ASSIST_CURRENT_MAX);
-    rotate = 0;
+    rotate = 0;   //初始化
+    right_active = 0U;  
+    
+    //forward,向前的容器。strafe,向右的容器。rotate,自转的容器。
 
     if ((forward == 0) && (strafe == 0))  //左侧优先，左杆有动作时不响应右杆
     {
@@ -72,13 +79,22 @@ void Can_Assist_Control(void)
                             * (float)CAN_ASSIST_CURRENT_MAX);
         rotate = (int32_t)(Dr16_Get_Channel_Norm(CAN_ASSIST_CH_ROTATE)
                            * (float)CAN_ASSIST_CURRENT_MAX);
+        right_active = 1U;
+
+
+        
     }
+
+    
+    corr = Gyro_Correct_Update(right_active, forward, rotate);
 
     for (i = 0U; i < 4U; i++)  //逆运动学
     {
         mix[i] = forward * can_assist_dir[i]   //逆运动学计算
                  + strafe * can_assist_strafe_dir[i]    //逆运动学计算
                  + rotate * can_assist_rotate_dir[i];    //逆运动学计算
+
+        mix[i] += corr;
 
         if (mix[i] > CAN_ASSIST_CURRENT_MAX) // 保护程序
         {
@@ -96,6 +112,8 @@ void Can_Assist_Control(void)
 void Can_Assist_Task(void)
 {
     uint32_t now;
+
+    Gyro_Correct_Task();
 
     now = HAL_GetTick();
 

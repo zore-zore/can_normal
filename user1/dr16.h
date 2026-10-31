@@ -56,7 +56,7 @@ void Dr16_Task(void);
 const dr16_ctrl_t *Dr16_Get(void);
 uint8_t Dr16_Is_Online(void);
 int16_t Dr16_Get_Channel_Centi(uint8_t index);
-float Dr16_Get_Channel_Norm(uint8_t index);
+float Dr16_Get_Channel_Norm(uint8_t index);  //遥控器信号传输，传输到can_assist.c中
 uint8_t Dr16_Get_Switch(uint8_t index);
 
 #endif

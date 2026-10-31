@@ -1,0 +1,17495 @@
+#line 1 "../user/BMI088Middleware.c"
+#line 1 "../user/BMI088Middleware.h"
+
+
+
+#line 1 "../user/struct_typedef.h"
+
+
+
+#line 1 "D:\\Keil_v5\\Arm\\Core\\ARM\\AC5\\Bin\\..\\include\\stdint.h"
+ 
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+     
+#line 27 "D:\\Keil_v5\\Arm\\Core\\ARM\\AC5\\Bin\\..\\include\\stdint.h"
+     
+
+
+
+
+
+
+
+
+
+
+
+#line 46 "D:\\Keil_v5\\Arm\\Core\\ARM\\AC5\\Bin\\..\\include\\stdint.h"
+
+
+
+
+
+ 
+
+     
+
+     
+typedef   signed          char int8_t;
+typedef   signed short     int int16_t;
+typedef   signed           int int32_t;
+typedef   signed       __int64 int64_t;
+
+     
+typedef unsigned          char uint8_t;
+typedef unsigned short     int uint16_t;
+typedef unsigned           int uint32_t;
+typedef unsigned       __int64 uint64_t;
+
+     
+
+     
+     
+typedef   signed          char int_least8_t;
+typedef   signed short     int int_least16_t;
+typedef   signed           int int_least32_t;
+typedef   signed       __int64 int_least64_t;
+
+     
+typedef unsigned          char uint_least8_t;
+typedef unsigned short     int uint_least16_t;
+typedef unsigned           int uint_least32_t;
+typedef unsigned       __int64 uint_least64_t;
+
+     
+
+     
+typedef   signed           int int_fast8_t;
+typedef   signed           int int_fast16_t;
+typedef   signed           int int_fast32_t;
+typedef   signed       __int64 int_fast64_t;
+
+     
+typedef unsigned           int uint_fast8_t;
+typedef unsigned           int uint_fast16_t;
+typedef unsigned           int uint_fast32_t;
+typedef unsigned       __int64 uint_fast64_t;
+
+     
+
+
+
+
+typedef   signed           int intptr_t;
+typedef unsigned           int uintptr_t;
+
+
+     
+typedef   signed     long long intmax_t;
+typedef unsigned     long long uintmax_t;
+
+
+
+
+     
+
+     
+
+
+
+
+
+     
+
+
+
+
+
+     
+
+
+
+
+
+     
+
+     
+
+
+
+
+
+     
+
+
+
+
+
+     
+
+
+
+
+
+     
+
+     
+
+
+
+
+
+     
+
+
+
+
+
+     
+
+
+
+
+
+     
+
+     
+
+
+
+
+
+
+     
+
+
+
+
+
+
+     
+
+
+
+
+
+
+     
+
+     
+
+
+     
+
+
+     
+
+
+     
+
+     
+#line 216 "D:\\Keil_v5\\Arm\\Core\\ARM\\AC5\\Bin\\..\\include\\stdint.h"
+
+     
+
+
+
+     
+
+
+
+
+
+
+     
+    
+ 
+
+
+
+#line 241 "D:\\Keil_v5\\Arm\\Core\\ARM\\AC5\\Bin\\..\\include\\stdint.h"
+
+     
+
+
+
+
+
+
+
+     
+
+
+
+
+
+
+
+
+
+
+     
+
+
+
+
+
+
+
+
+
+
+
+#line 305 "D:\\Keil_v5\\Arm\\Core\\ARM\\AC5\\Bin\\..\\include\\stdint.h"
+
+
+
+
+
+
+ 
+#line 5 "../user/struct_typedef.h"
+
+typedef float  fp32;
+typedef double fp64;
+
+#line 5 "../user/BMI088Middleware.h"
+
+
+
+
+extern void BMI088_GPIO_init(void);
+extern void BMI088_com_init(void);
+extern void BMI088_delay_ms(uint16_t ms);
+extern void BMI088_delay_us(uint16_t us);
+
+
+extern void BMI088_ACCEL_NS_L(void);
+extern void BMI088_ACCEL_NS_H(void);
+
+extern void BMI088_GYRO_NS_L(void);
+extern void BMI088_GYRO_NS_H(void);
+
+extern uint8_t BMI088_read_write_byte(uint8_t reg);
+
+
+
+
+
+#line 2 "../user/BMI088Middleware.c"
+#line 1 "../Core/Inc/main.h"
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+ 
+
+
+
+
+
+
+
+ 
+#line 1 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+ 
+
+
+
+
+
+
+
+ 
+#line 1 "../Core/Inc/stm32f4xx_hal_conf.h"
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+ 
+
+
+
+
+
+
+
+ 
+ 
+
+ 
+
+
+ 
+
+
+   
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+#line 91 "../Core/Inc/stm32f4xx_hal_conf.h"
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+ 
+
+
+ 
+#line 156 "../Core/Inc/stm32f4xx_hal_conf.h"
+
+#line 196 "../Core/Inc/stm32f4xx_hal_conf.h"
+
+ 
+
+
+
+ 
+ 
+
+ 
+
+ 
+
+ 
+#line 215 "../Core/Inc/stm32f4xx_hal_conf.h"
+
+ 
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+#line 249 "../Core/Inc/stm32f4xx_hal_conf.h"
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+ 
+
+#line 1 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+ 
+#line 1 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+ 
+#line 1 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+ 
+#line 94 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+
+
+
+ 
+#line 106 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+
+
+
+ 
+#line 118 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+
+
+
+ 
+
+
+
+ 
+
+#line 1 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+typedef enum
+{
+   
+  NonMaskableInt_IRQn         = -14,     
+  MemoryManagement_IRQn       = -12,     
+  BusFault_IRQn               = -11,     
+  UsageFault_IRQn             = -10,     
+  SVCall_IRQn                 = -5,      
+  DebugMonitor_IRQn           = -4,      
+  PendSV_IRQn                 = -2,      
+  SysTick_IRQn                = -1,      
+   
+  WWDG_IRQn                   = 0,       
+  PVD_IRQn                    = 1,       
+  TAMP_STAMP_IRQn             = 2,       
+  RTC_WKUP_IRQn               = 3,       
+  FLASH_IRQn                  = 4,       
+  RCC_IRQn                    = 5,       
+  EXTI0_IRQn                  = 6,       
+  EXTI1_IRQn                  = 7,       
+  EXTI2_IRQn                  = 8,       
+  EXTI3_IRQn                  = 9,       
+  EXTI4_IRQn                  = 10,      
+  DMA1_Stream0_IRQn           = 11,      
+  DMA1_Stream1_IRQn           = 12,      
+  DMA1_Stream2_IRQn           = 13,      
+  DMA1_Stream3_IRQn           = 14,      
+  DMA1_Stream4_IRQn           = 15,      
+  DMA1_Stream5_IRQn           = 16,      
+  DMA1_Stream6_IRQn           = 17,      
+  ADC_IRQn                    = 18,      
+  CAN1_TX_IRQn                = 19,      
+  CAN1_RX0_IRQn               = 20,      
+  CAN1_RX1_IRQn               = 21,      
+  CAN1_SCE_IRQn               = 22,      
+  EXTI9_5_IRQn                = 23,      
+  TIM1_BRK_TIM9_IRQn          = 24,      
+  TIM1_UP_TIM10_IRQn          = 25,      
+  TIM1_TRG_COM_TIM11_IRQn     = 26,      
+  TIM1_CC_IRQn                = 27,      
+  TIM2_IRQn                   = 28,      
+  TIM3_IRQn                   = 29,      
+  TIM4_IRQn                   = 30,      
+  I2C1_EV_IRQn                = 31,      
+  I2C1_ER_IRQn                = 32,      
+  I2C2_EV_IRQn                = 33,      
+  I2C2_ER_IRQn                = 34,      
+  SPI1_IRQn                   = 35,      
+  SPI2_IRQn                   = 36,      
+  USART1_IRQn                 = 37,      
+  USART2_IRQn                 = 38,      
+  USART3_IRQn                 = 39,      
+  EXTI15_10_IRQn              = 40,      
+  RTC_Alarm_IRQn              = 41,      
+  OTG_FS_WKUP_IRQn            = 42,      
+  TIM8_BRK_TIM12_IRQn         = 43,      
+  TIM8_UP_TIM13_IRQn          = 44,      
+  TIM8_TRG_COM_TIM14_IRQn     = 45,      
+  TIM8_CC_IRQn                = 46,      
+  DMA1_Stream7_IRQn           = 47,      
+  FSMC_IRQn                   = 48,      
+  SDIO_IRQn                   = 49,      
+  TIM5_IRQn                   = 50,      
+  SPI3_IRQn                   = 51,      
+  UART4_IRQn                  = 52,      
+  UART5_IRQn                  = 53,      
+  TIM6_DAC_IRQn               = 54,      
+  TIM7_IRQn                   = 55,      
+  DMA2_Stream0_IRQn           = 56,      
+  DMA2_Stream1_IRQn           = 57,      
+  DMA2_Stream2_IRQn           = 58,      
+  DMA2_Stream3_IRQn           = 59,      
+  DMA2_Stream4_IRQn           = 60,      
+  ETH_IRQn                    = 61,      
+  ETH_WKUP_IRQn               = 62,      
+  CAN2_TX_IRQn                = 63,      
+  CAN2_RX0_IRQn               = 64,      
+  CAN2_RX1_IRQn               = 65,      
+  CAN2_SCE_IRQn               = 66,      
+  OTG_FS_IRQn                 = 67,      
+  DMA2_Stream5_IRQn           = 68,      
+  DMA2_Stream6_IRQn           = 69,      
+  DMA2_Stream7_IRQn           = 70,      
+  USART6_IRQn                 = 71,      
+  I2C3_EV_IRQn                = 72,      
+  I2C3_ER_IRQn                = 73,      
+  OTG_HS_EP1_OUT_IRQn         = 74,      
+  OTG_HS_EP1_IN_IRQn          = 75,      
+  OTG_HS_WKUP_IRQn            = 76,      
+  OTG_HS_IRQn                 = 77,      
+  DCMI_IRQn                   = 78,      
+  RNG_IRQn                    = 80,      
+  FPU_IRQn                    = 81       
+} IRQn_Type;
+ 
+
+
+
+
+ 
+
+#line 1 "../Drivers/CMSIS/Include/core_cm4.h"
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+#line 35 "../Drivers/CMSIS/Include/core_cm4.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+#line 1 "../Drivers/CMSIS/Include/cmsis_version.h"
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+#line 64 "../Drivers/CMSIS/Include/core_cm4.h"
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+#line 87 "../Drivers/CMSIS/Include/core_cm4.h"
+
+#line 161 "../Drivers/CMSIS/Include/core_cm4.h"
+
+#line 1 "../Drivers/CMSIS/Include/cmsis_compiler.h"
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+#line 29 "../Drivers/CMSIS/Include/cmsis_compiler.h"
+
+
+
+ 
+#line 1 "../Drivers/CMSIS/Include/cmsis_armcc.h"
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+   
+   
+
+ 
+
+
+
+
+ 
+#line 111 "../Drivers/CMSIS/Include/cmsis_armcc.h"
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+__attribute__((section(".rev16_text"))) static __inline __asm uint32_t __REV16(uint32_t value)
+{
+  rev16 r0, r0
+  bx lr
+}
+
+
+
+
+
+
+
+
+ 
+
+__attribute__((section(".revsh_text"))) static __inline __asm int16_t __REVSH(int16_t value)
+{
+  revsh r0, r0
+  bx lr
+}
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+__attribute__((always_inline)) static __inline uint32_t __RBIT(uint32_t value)
+{
+  uint32_t result;
+  uint32_t s = (4U   * 8U) - 1U;  
+
+  result = value;                       
+  for (value >>= 1U; value != 0U; value >>= 1U)
+  {
+    result <<= 1U;
+    result |= value & 1U;
+    s--;
+  }
+  result <<= s;                         
+  return result;
+}
+
+
+
+
+
+
+
+
+ 
+
+
+
+#line 473 "../Drivers/CMSIS/Include/cmsis_armcc.h"
+
+
+
+
+
+
+
+ 
+__attribute__((always_inline)) static __inline int32_t __SSAT(int32_t val, uint32_t sat)
+{
+  if ((sat >= 1U) && (sat <= 32U))
+  {
+    const int32_t max = (int32_t)((1U << (sat - 1U)) - 1U);
+    const int32_t min = -1 - max ;
+    if (val > max)
+    {
+      return max;
+    }
+    else if (val < min)
+    {
+      return min;
+    }
+  }
+  return val;
+}
+
+
+
+
+
+
+
+ 
+__attribute__((always_inline)) static __inline uint32_t __USAT(int32_t val, uint32_t sat)
+{
+  if (sat <= 31U)
+  {
+    const uint32_t max = ((1U << sat) - 1U);
+    if (val > (int32_t)max)
+    {
+      return max;
+    }
+    else if (val < 0)
+    {
+      return 0U;
+    }
+  }
+  return (uint32_t)val;
+}
+
+
+
+
+   
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+ 
+static __inline uint32_t __get_CONTROL(void)
+{
+  register uint32_t __regControl         __asm("control");
+  return(__regControl);
+}
+
+
+
+
+
+
+ 
+static __inline void __set_CONTROL(uint32_t control)
+{
+  register uint32_t __regControl         __asm("control");
+  __regControl = control;
+  __isb(0xF);
+}
+
+
+
+
+
+
+ 
+static __inline uint32_t __get_IPSR(void)
+{
+  register uint32_t __regIPSR          __asm("ipsr");
+  return(__regIPSR);
+}
+
+
+
+
+
+
+ 
+static __inline uint32_t __get_APSR(void)
+{
+  register uint32_t __regAPSR          __asm("apsr");
+  return(__regAPSR);
+}
+
+
+
+
+
+
+ 
+static __inline uint32_t __get_xPSR(void)
+{
+  register uint32_t __regXPSR          __asm("xpsr");
+  return(__regXPSR);
+}
+
+
+
+
+
+
+ 
+static __inline uint32_t __get_PSP(void)
+{
+  register uint32_t __regProcessStackPointer  __asm("psp");
+  return(__regProcessStackPointer);
+}
+
+
+
+
+
+
+ 
+static __inline void __set_PSP(uint32_t topOfProcStack)
+{
+  register uint32_t __regProcessStackPointer  __asm("psp");
+  __regProcessStackPointer = topOfProcStack;
+}
+
+
+
+
+
+
+ 
+static __inline uint32_t __get_MSP(void)
+{
+  register uint32_t __regMainStackPointer     __asm("msp");
+  return(__regMainStackPointer);
+}
+
+
+
+
+
+
+ 
+static __inline void __set_MSP(uint32_t topOfMainStack)
+{
+  register uint32_t __regMainStackPointer     __asm("msp");
+  __regMainStackPointer = topOfMainStack;
+}
+
+
+
+
+
+
+ 
+static __inline uint32_t __get_PRIMASK(void)
+{
+  register uint32_t __regPriMask         __asm("primask");
+  return(__regPriMask);
+}
+
+
+
+
+
+
+ 
+static __inline void __set_PRIMASK(uint32_t priMask)
+{
+  register uint32_t __regPriMask         __asm("primask");
+  __regPriMask = (priMask);
+}
+
+
+#line 764 "../Drivers/CMSIS/Include/cmsis_armcc.h"
+
+
+
+
+
+
+ 
+static __inline uint32_t __get_FPSCR(void)
+{
+
+
+
+
+
+   return(0U);
+
+}
+
+
+
+
+
+
+ 
+static __inline void __set_FPSCR(uint32_t fpscr)
+{
+
+
+
+
+
+  (void)fpscr;
+
+}
+
+
+ 
+
+
+ 
+
+
+
+ 
+
+#line 885 "../Drivers/CMSIS/Include/cmsis_armcc.h"
+ 
+
+
+#line 35 "../Drivers/CMSIS/Include/cmsis_compiler.h"
+
+
+
+
+ 
+#line 280 "../Drivers/CMSIS/Include/cmsis_compiler.h"
+
+
+
+
+#line 163 "../Drivers/CMSIS/Include/core_cm4.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+#line 212 "../Drivers/CMSIS/Include/core_cm4.h"
+
+ 
+
+
+
+
+
+
+ 
+#line 228 "../Drivers/CMSIS/Include/core_cm4.h"
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+ 
+typedef union
+{
+  struct
+  {
+    uint32_t _reserved0:16;               
+    uint32_t GE:4;                        
+    uint32_t _reserved1:7;                
+    uint32_t Q:1;                         
+    uint32_t V:1;                         
+    uint32_t C:1;                         
+    uint32_t Z:1;                         
+    uint32_t N:1;                         
+  } b;                                    
+  uint32_t w;                             
+} APSR_Type;
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+typedef union
+{
+  struct
+  {
+    uint32_t ISR:9;                       
+    uint32_t _reserved0:23;               
+  } b;                                    
+  uint32_t w;                             
+} IPSR_Type;
+
+ 
+
+
+
+
+
+
+ 
+typedef union
+{
+  struct
+  {
+    uint32_t ISR:9;                       
+    uint32_t _reserved0:1;                
+    uint32_t ICI_IT_1:6;                  
+    uint32_t GE:4;                        
+    uint32_t _reserved1:4;                
+    uint32_t T:1;                         
+    uint32_t ICI_IT_2:2;                  
+    uint32_t Q:1;                         
+    uint32_t V:1;                         
+    uint32_t C:1;                         
+    uint32_t Z:1;                         
+    uint32_t N:1;                         
+  } b;                                    
+  uint32_t w;                             
+} xPSR_Type;
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+typedef union
+{
+  struct
+  {
+    uint32_t nPRIV:1;                     
+    uint32_t SPSEL:1;                     
+    uint32_t FPCA:1;                      
+    uint32_t _reserved0:29;               
+  } b;                                    
+  uint32_t w;                             
+} CONTROL_Type;
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+typedef struct
+{
+  volatile uint32_t ISER[8U];                
+        uint32_t RESERVED0[24U];
+  volatile uint32_t ICER[8U];                
+        uint32_t RESERVED1[24U];
+  volatile uint32_t ISPR[8U];                
+        uint32_t RESERVED2[24U];
+  volatile uint32_t ICPR[8U];                
+        uint32_t RESERVED3[24U];
+  volatile uint32_t IABR[8U];                
+        uint32_t RESERVED4[56U];
+  volatile uint8_t  IP[240U];                
+        uint32_t RESERVED5[644U];
+  volatile  uint32_t STIR;                    
+}  NVIC_Type;
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+typedef struct
+{
+  volatile const  uint32_t CPUID;                   
+  volatile uint32_t ICSR;                    
+  volatile uint32_t VTOR;                    
+  volatile uint32_t AIRCR;                   
+  volatile uint32_t SCR;                     
+  volatile uint32_t CCR;                     
+  volatile uint8_t  SHP[12U];                
+  volatile uint32_t SHCSR;                   
+  volatile uint32_t CFSR;                    
+  volatile uint32_t HFSR;                    
+  volatile uint32_t DFSR;                    
+  volatile uint32_t MMFAR;                   
+  volatile uint32_t BFAR;                    
+  volatile uint32_t AFSR;                    
+  volatile const  uint32_t PFR[2U];                 
+  volatile const  uint32_t DFR;                     
+  volatile const  uint32_t ADR;                     
+  volatile const  uint32_t MMFR[4U];                
+  volatile const  uint32_t ISAR[5U];                
+        uint32_t RESERVED0[5U];
+  volatile uint32_t CPACR;                   
+} SCB_Type;
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+typedef struct
+{
+        uint32_t RESERVED0[1U];
+  volatile const  uint32_t ICTR;                    
+  volatile uint32_t ACTLR;                   
+} SCnSCB_Type;
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+typedef struct
+{
+  volatile uint32_t CTRL;                    
+  volatile uint32_t LOAD;                    
+  volatile uint32_t VAL;                     
+  volatile const  uint32_t CALIB;                   
+} SysTick_Type;
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+typedef struct
+{
+  volatile  union
+  {
+    volatile  uint8_t    u8;                  
+    volatile  uint16_t   u16;                 
+    volatile  uint32_t   u32;                 
+  }  PORT [32U];                          
+        uint32_t RESERVED0[864U];
+  volatile uint32_t TER;                     
+        uint32_t RESERVED1[15U];
+  volatile uint32_t TPR;                     
+        uint32_t RESERVED2[15U];
+  volatile uint32_t TCR;                     
+        uint32_t RESERVED3[32U];
+        uint32_t RESERVED4[43U];
+  volatile  uint32_t LAR;                     
+  volatile const  uint32_t LSR;                     
+        uint32_t RESERVED5[6U];
+  volatile const  uint32_t PID4;                    
+  volatile const  uint32_t PID5;                    
+  volatile const  uint32_t PID6;                    
+  volatile const  uint32_t PID7;                    
+  volatile const  uint32_t PID0;                    
+  volatile const  uint32_t PID1;                    
+  volatile const  uint32_t PID2;                    
+  volatile const  uint32_t PID3;                    
+  volatile const  uint32_t CID0;                    
+  volatile const  uint32_t CID1;                    
+  volatile const  uint32_t CID2;                    
+  volatile const  uint32_t CID3;                    
+} ITM_Type;
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+typedef struct
+{
+  volatile uint32_t CTRL;                    
+  volatile uint32_t CYCCNT;                  
+  volatile uint32_t CPICNT;                  
+  volatile uint32_t EXCCNT;                  
+  volatile uint32_t SLEEPCNT;                
+  volatile uint32_t LSUCNT;                  
+  volatile uint32_t FOLDCNT;                 
+  volatile const  uint32_t PCSR;                    
+  volatile uint32_t COMP0;                   
+  volatile uint32_t MASK0;                   
+  volatile uint32_t FUNCTION0;               
+        uint32_t RESERVED0[1U];
+  volatile uint32_t COMP1;                   
+  volatile uint32_t MASK1;                   
+  volatile uint32_t FUNCTION1;               
+        uint32_t RESERVED1[1U];
+  volatile uint32_t COMP2;                   
+  volatile uint32_t MASK2;                   
+  volatile uint32_t FUNCTION2;               
+        uint32_t RESERVED2[1U];
+  volatile uint32_t COMP3;                   
+  volatile uint32_t MASK3;                   
+  volatile uint32_t FUNCTION3;               
+} DWT_Type;
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+typedef struct
+{
+  volatile const  uint32_t SSPSR;                   
+  volatile uint32_t CSPSR;                   
+        uint32_t RESERVED0[2U];
+  volatile uint32_t ACPR;                    
+        uint32_t RESERVED1[55U];
+  volatile uint32_t SPPR;                    
+        uint32_t RESERVED2[131U];
+  volatile const  uint32_t FFSR;                    
+  volatile uint32_t FFCR;                    
+  volatile const  uint32_t FSCR;                    
+        uint32_t RESERVED3[759U];
+  volatile const  uint32_t TRIGGER;                 
+  volatile const  uint32_t FIFO0;                   
+  volatile const  uint32_t ITATBCTR2;               
+        uint32_t RESERVED4[1U];
+  volatile const  uint32_t ITATBCTR0;               
+  volatile const  uint32_t FIFO1;                   
+  volatile uint32_t ITCTRL;                  
+        uint32_t RESERVED5[39U];
+  volatile uint32_t CLAIMSET;                
+  volatile uint32_t CLAIMCLR;                
+        uint32_t RESERVED7[8U];
+  volatile const  uint32_t DEVID;                   
+  volatile const  uint32_t DEVTYPE;                 
+} TPI_Type;
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+typedef struct
+{
+  volatile const  uint32_t TYPE;                    
+  volatile uint32_t CTRL;                    
+  volatile uint32_t RNR;                     
+  volatile uint32_t RBAR;                    
+  volatile uint32_t RASR;                    
+  volatile uint32_t RBAR_A1;                 
+  volatile uint32_t RASR_A1;                 
+  volatile uint32_t RBAR_A2;                 
+  volatile uint32_t RASR_A2;                 
+  volatile uint32_t RBAR_A3;                 
+  volatile uint32_t RASR_A3;                 
+} MPU_Type;
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+typedef struct
+{
+        uint32_t RESERVED0[1U];
+  volatile uint32_t FPCCR;                   
+  volatile uint32_t FPCAR;                   
+  volatile uint32_t FPDSCR;                  
+  volatile const  uint32_t MVFR0;                   
+  volatile const  uint32_t MVFR1;                   
+  volatile const  uint32_t MVFR2;                   
+} FPU_Type;
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+typedef struct
+{
+  volatile uint32_t DHCSR;                   
+  volatile  uint32_t DCRSR;                   
+  volatile uint32_t DCRDR;                   
+  volatile uint32_t DEMCR;                   
+} CoreDebug_Type;
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+ 
+#line 1558 "../Drivers/CMSIS/Include/core_cm4.h"
+
+#line 1567 "../Drivers/CMSIS/Include/core_cm4.h"
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+#line 1621 "../Drivers/CMSIS/Include/core_cm4.h"
+
+#line 1631 "../Drivers/CMSIS/Include/core_cm4.h"
+
+
+
+
+ 
+#line 1642 "../Drivers/CMSIS/Include/core_cm4.h"
+
+
+
+
+
+
+
+
+
+
+ 
+static __inline void __NVIC_SetPriorityGrouping(uint32_t PriorityGroup)
+{
+  uint32_t reg_value;
+  uint32_t PriorityGroupTmp = (PriorityGroup & (uint32_t)0x07UL);              
+
+  reg_value  =  ((SCB_Type *) ((0xE000E000UL) + 0x0D00UL) )->AIRCR;                                                    
+  reg_value &= ~((uint32_t)((0xFFFFUL << 16U) | (7UL << 8U)));  
+  reg_value  =  (reg_value                                   |
+                ((uint32_t)0x5FAUL << 16U) |
+                (PriorityGroupTmp << 8U)  );               
+  ((SCB_Type *) ((0xE000E000UL) + 0x0D00UL) )->AIRCR =  reg_value;
+}
+
+
+
+
+
+
+ 
+static __inline uint32_t __NVIC_GetPriorityGrouping(void)
+{
+  return ((uint32_t)((((SCB_Type *) ((0xE000E000UL) + 0x0D00UL) )->AIRCR & (7UL << 8U)) >> 8U));
+}
+
+
+
+
+
+
+
+ 
+static __inline void __NVIC_EnableIRQ(IRQn_Type IRQn)
+{
+  if ((int32_t)(IRQn) >= 0)
+  {
+    __memory_changed();
+    ((NVIC_Type *) ((0xE000E000UL) + 0x0100UL) )->ISER[(((uint32_t)IRQn) >> 5UL)] = (uint32_t)(1UL << (((uint32_t)IRQn) & 0x1FUL));
+    __memory_changed();
+  }
+}
+
+
+
+
+
+
+
+
+
+ 
+static __inline uint32_t __NVIC_GetEnableIRQ(IRQn_Type IRQn)
+{
+  if ((int32_t)(IRQn) >= 0)
+  {
+    return((uint32_t)(((((NVIC_Type *) ((0xE000E000UL) + 0x0100UL) )->ISER[(((uint32_t)IRQn) >> 5UL)] & (1UL << (((uint32_t)IRQn) & 0x1FUL))) != 0UL) ? 1UL : 0UL));
+  }
+  else
+  {
+    return(0U);
+  }
+}
+
+
+
+
+
+
+
+ 
+static __inline void __NVIC_DisableIRQ(IRQn_Type IRQn)
+{
+  if ((int32_t)(IRQn) >= 0)
+  {
+    ((NVIC_Type *) ((0xE000E000UL) + 0x0100UL) )->ICER[(((uint32_t)IRQn) >> 5UL)] = (uint32_t)(1UL << (((uint32_t)IRQn) & 0x1FUL));
+    __dsb(0xF);
+    __isb(0xF);
+  }
+}
+
+
+
+
+
+
+
+
+
+ 
+static __inline uint32_t __NVIC_GetPendingIRQ(IRQn_Type IRQn)
+{
+  if ((int32_t)(IRQn) >= 0)
+  {
+    return((uint32_t)(((((NVIC_Type *) ((0xE000E000UL) + 0x0100UL) )->ISPR[(((uint32_t)IRQn) >> 5UL)] & (1UL << (((uint32_t)IRQn) & 0x1FUL))) != 0UL) ? 1UL : 0UL));
+  }
+  else
+  {
+    return(0U);
+  }
+}
+
+
+
+
+
+
+
+ 
+static __inline void __NVIC_SetPendingIRQ(IRQn_Type IRQn)
+{
+  if ((int32_t)(IRQn) >= 0)
+  {
+    ((NVIC_Type *) ((0xE000E000UL) + 0x0100UL) )->ISPR[(((uint32_t)IRQn) >> 5UL)] = (uint32_t)(1UL << (((uint32_t)IRQn) & 0x1FUL));
+  }
+}
+
+
+
+
+
+
+
+ 
+static __inline void __NVIC_ClearPendingIRQ(IRQn_Type IRQn)
+{
+  if ((int32_t)(IRQn) >= 0)
+  {
+    ((NVIC_Type *) ((0xE000E000UL) + 0x0100UL) )->ICPR[(((uint32_t)IRQn) >> 5UL)] = (uint32_t)(1UL << (((uint32_t)IRQn) & 0x1FUL));
+  }
+}
+
+
+
+
+
+
+
+
+
+ 
+static __inline uint32_t __NVIC_GetActive(IRQn_Type IRQn)
+{
+  if ((int32_t)(IRQn) >= 0)
+  {
+    return((uint32_t)(((((NVIC_Type *) ((0xE000E000UL) + 0x0100UL) )->IABR[(((uint32_t)IRQn) >> 5UL)] & (1UL << (((uint32_t)IRQn) & 0x1FUL))) != 0UL) ? 1UL : 0UL));
+  }
+  else
+  {
+    return(0U);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+ 
+static __inline void __NVIC_SetPriority(IRQn_Type IRQn, uint32_t priority)
+{
+  if ((int32_t)(IRQn) >= 0)
+  {
+    ((NVIC_Type *) ((0xE000E000UL) + 0x0100UL) )->IP[((uint32_t)IRQn)]               = (uint8_t)((priority << (8U - 4U)) & (uint32_t)0xFFUL);
+  }
+  else
+  {
+    ((SCB_Type *) ((0xE000E000UL) + 0x0D00UL) )->SHP[(((uint32_t)IRQn) & 0xFUL)-4UL] = (uint8_t)((priority << (8U - 4U)) & (uint32_t)0xFFUL);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+ 
+static __inline uint32_t __NVIC_GetPriority(IRQn_Type IRQn)
+{
+
+  if ((int32_t)(IRQn) >= 0)
+  {
+    return(((uint32_t)((NVIC_Type *) ((0xE000E000UL) + 0x0100UL) )->IP[((uint32_t)IRQn)]               >> (8U - 4U)));
+  }
+  else
+  {
+    return(((uint32_t)((SCB_Type *) ((0xE000E000UL) + 0x0D00UL) )->SHP[(((uint32_t)IRQn) & 0xFUL)-4UL] >> (8U - 4U)));
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+static __inline uint32_t NVIC_EncodePriority (uint32_t PriorityGroup, uint32_t PreemptPriority, uint32_t SubPriority)
+{
+  uint32_t PriorityGroupTmp = (PriorityGroup & (uint32_t)0x07UL);    
+  uint32_t PreemptPriorityBits;
+  uint32_t SubPriorityBits;
+
+  PreemptPriorityBits = ((7UL - PriorityGroupTmp) > (uint32_t)(4U)) ? (uint32_t)(4U) : (uint32_t)(7UL - PriorityGroupTmp);
+  SubPriorityBits     = ((PriorityGroupTmp + (uint32_t)(4U)) < (uint32_t)7UL) ? (uint32_t)0UL : (uint32_t)((PriorityGroupTmp - 7UL) + (uint32_t)(4U));
+
+  return (
+           ((PreemptPriority & (uint32_t)((1UL << (PreemptPriorityBits)) - 1UL)) << SubPriorityBits) |
+           ((SubPriority     & (uint32_t)((1UL << (SubPriorityBits    )) - 1UL)))
+         );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+static __inline void NVIC_DecodePriority (uint32_t Priority, uint32_t PriorityGroup, uint32_t* const pPreemptPriority, uint32_t* const pSubPriority)
+{
+  uint32_t PriorityGroupTmp = (PriorityGroup & (uint32_t)0x07UL);    
+  uint32_t PreemptPriorityBits;
+  uint32_t SubPriorityBits;
+
+  PreemptPriorityBits = ((7UL - PriorityGroupTmp) > (uint32_t)(4U)) ? (uint32_t)(4U) : (uint32_t)(7UL - PriorityGroupTmp);
+  SubPriorityBits     = ((PriorityGroupTmp + (uint32_t)(4U)) < (uint32_t)7UL) ? (uint32_t)0UL : (uint32_t)((PriorityGroupTmp - 7UL) + (uint32_t)(4U));
+
+  *pPreemptPriority = (Priority >> SubPriorityBits) & (uint32_t)((1UL << (PreemptPriorityBits)) - 1UL);
+  *pSubPriority     = (Priority                   ) & (uint32_t)((1UL << (SubPriorityBits    )) - 1UL);
+}
+
+
+
+
+
+
+
+
+
+
+ 
+static __inline void __NVIC_SetVector(IRQn_Type IRQn, uint32_t vector)
+{
+  uint32_t *vectors = (uint32_t *)((SCB_Type *) ((0xE000E000UL) + 0x0D00UL) )->VTOR;
+  vectors[(int32_t)IRQn + 16] = vector;
+   
+}
+
+
+
+
+
+
+
+
+
+ 
+static __inline uint32_t __NVIC_GetVector(IRQn_Type IRQn)
+{
+  uint32_t *vectors = (uint32_t *)((SCB_Type *) ((0xE000E000UL) + 0x0D00UL) )->VTOR;
+  return vectors[(int32_t)IRQn + 16];
+}
+
+
+
+
+
+ 
+__declspec(noreturn) static __inline void __NVIC_SystemReset(void)
+{
+  __dsb(0xF);                                                          
+ 
+  ((SCB_Type *) ((0xE000E000UL) + 0x0D00UL) )->AIRCR  = (uint32_t)((0x5FAUL << 16U)    |
+                           (((SCB_Type *) ((0xE000E000UL) + 0x0D00UL) )->AIRCR & (7UL << 8U)) |
+                            (1UL << 2U)    );          
+  __dsb(0xF);                                                           
+
+  for(;;)                                                            
+  {
+    __nop();
+  }
+}
+
+ 
+
+
+ 
+
+
+
+#line 1 "../Drivers/CMSIS/Include/mpu_armv7.h"
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+ 
+
+
+
+#line 62 "../Drivers/CMSIS/Include/mpu_armv7.h"
+
+#line 69 "../Drivers/CMSIS/Include/mpu_armv7.h"
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+#line 110 "../Drivers/CMSIS/Include/mpu_armv7.h"
+
+
+
+
+
+
+
+
+
+
+
+
+                          
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+ 
+typedef struct {
+  uint32_t RBAR; 
+  uint32_t RASR; 
+} ARM_MPU_Region_t;
+    
+
+
+ 
+static __inline void ARM_MPU_Enable(uint32_t MPU_Control)
+{
+  __dmb(0xF);
+  ((MPU_Type *) ((0xE000E000UL) + 0x0D90UL) )->CTRL = MPU_Control | (1UL );
+
+  ((SCB_Type *) ((0xE000E000UL) + 0x0D00UL) )->SHCSR |= (1UL << 16U);
+
+  __dsb(0xF);
+  __isb(0xF);
+}
+
+
+ 
+static __inline void ARM_MPU_Disable(void)
+{
+  __dmb(0xF);
+
+  ((SCB_Type *) ((0xE000E000UL) + 0x0D00UL) )->SHCSR &= ~(1UL << 16U);
+
+  ((MPU_Type *) ((0xE000E000UL) + 0x0D90UL) )->CTRL  &= ~(1UL );
+  __dsb(0xF);
+  __isb(0xF);
+}
+
+
+
+ 
+static __inline void ARM_MPU_ClrRegion(uint32_t rnr)
+{
+  ((MPU_Type *) ((0xE000E000UL) + 0x0D90UL) )->RNR = rnr;
+  ((MPU_Type *) ((0xE000E000UL) + 0x0D90UL) )->RASR = 0U;
+}
+
+
+
+
+    
+static __inline void ARM_MPU_SetRegion(uint32_t rbar, uint32_t rasr)
+{
+  ((MPU_Type *) ((0xE000E000UL) + 0x0D90UL) )->RBAR = rbar;
+  ((MPU_Type *) ((0xE000E000UL) + 0x0D90UL) )->RASR = rasr;
+}
+
+
+
+
+
+    
+static __inline void ARM_MPU_SetRegionEx(uint32_t rnr, uint32_t rbar, uint32_t rasr)
+{
+  ((MPU_Type *) ((0xE000E000UL) + 0x0D90UL) )->RNR = rnr;
+  ((MPU_Type *) ((0xE000E000UL) + 0x0D90UL) )->RBAR = rbar;
+  ((MPU_Type *) ((0xE000E000UL) + 0x0D90UL) )->RASR = rasr;
+}
+
+
+
+
+
+ 
+static __inline void ARM_MPU_OrderedMemcpy(volatile uint32_t* dst, const uint32_t* __restrict src, uint32_t len)
+{
+  uint32_t i;
+  for (i = 0U; i < len; ++i) 
+  {
+    dst[i] = src[i];
+  }
+}
+
+
+
+
+ 
+static __inline void ARM_MPU_Load(ARM_MPU_Region_t const* table, uint32_t cnt) 
+{
+  const uint32_t rowWordSize = sizeof(ARM_MPU_Region_t)/4U;
+  while (cnt > 4U) {
+    ARM_MPU_OrderedMemcpy(&(((MPU_Type *) ((0xE000E000UL) + 0x0D90UL) )->RBAR), &(table->RBAR), 4U*rowWordSize);
+    table += 4U;
+    cnt -= 4U;
+  }
+  ARM_MPU_OrderedMemcpy(&(((MPU_Type *) ((0xE000E000UL) + 0x0D90UL) )->RBAR), &(table->RBAR), cnt*rowWordSize);
+}
+
+#line 1961 "../Drivers/CMSIS/Include/core_cm4.h"
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+static __inline uint32_t SCB_GetFPUType(void)
+{
+  uint32_t mvfr0;
+
+  mvfr0 = ((FPU_Type *) ((0xE000E000UL) + 0x0F30UL) )->MVFR0;
+  if      ((mvfr0 & ((0xFUL << 4U) | (0xFUL << 8U))) == 0x020U)
+  {
+    return 1U;            
+  }
+  else
+  {
+    return 0U;            
+  }
+}
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+static __inline uint32_t SysTick_Config(uint32_t ticks)
+{
+  if ((ticks - 1UL) > (0xFFFFFFUL ))
+  {
+    return (1UL);                                                    
+  }
+
+  ((SysTick_Type *) ((0xE000E000UL) + 0x0010UL) )->LOAD  = (uint32_t)(ticks - 1UL);                          
+  __NVIC_SetPriority (SysTick_IRQn, (1UL << 4U) - 1UL);  
+  ((SysTick_Type *) ((0xE000E000UL) + 0x0010UL) )->VAL   = 0UL;                                              
+  ((SysTick_Type *) ((0xE000E000UL) + 0x0010UL) )->CTRL  = (1UL << 2U) |
+                   (1UL << 1U)   |
+                   (1UL );                          
+  return (0UL);                                                      
+}
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+extern volatile int32_t ITM_RxBuffer;                               
+
+
+
+
+
+
+
+
+
+
+ 
+static __inline uint32_t ITM_SendChar (uint32_t ch)
+{
+  if (((((ITM_Type *) (0xE0000000UL) )->TCR & (1UL )) != 0UL) &&       
+      ((((ITM_Type *) (0xE0000000UL) )->TER & 1UL               ) != 0UL)   )      
+  {
+    while (((ITM_Type *) (0xE0000000UL) )->PORT[0U].u32 == 0UL)
+    {
+      __nop();
+    }
+    ((ITM_Type *) (0xE0000000UL) )->PORT[0U].u8 = (uint8_t)ch;
+  }
+  return (ch);
+}
+
+
+
+
+
+
+
+ 
+static __inline int32_t ITM_ReceiveChar (void)
+{
+  int32_t ch = -1;                            
+
+  if (ITM_RxBuffer != ((int32_t)0x5AA55AA5U))
+  {
+    ch = ITM_RxBuffer;
+    ITM_RxBuffer = ((int32_t)0x5AA55AA5U);        
+  }
+
+  return (ch);
+}
+
+
+
+
+
+
+
+ 
+static __inline int32_t ITM_CheckChar (void)
+{
+
+  if (ITM_RxBuffer == ((int32_t)0x5AA55AA5U))
+  {
+    return (0);                               
+  }
+  else
+  {
+    return (1);                               
+  }
+}
+
+ 
+
+
+
+
+
+
+
+
+
+
+#line 167 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+#line 1 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+extern uint32_t SystemCoreClock;           
+
+extern const uint8_t  AHBPrescTable[16];     
+extern const uint8_t  APBPrescTable[8];      
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+extern void SystemInit(void);
+extern void SystemCoreClockUpdate(void);
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+#line 168 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+#line 169 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+ 
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t SR;      
+  volatile uint32_t CR1;     
+  volatile uint32_t CR2;     
+  volatile uint32_t SMPR1;   
+  volatile uint32_t SMPR2;   
+  volatile uint32_t JOFR1;   
+  volatile uint32_t JOFR2;   
+  volatile uint32_t JOFR3;   
+  volatile uint32_t JOFR4;   
+  volatile uint32_t HTR;     
+  volatile uint32_t LTR;     
+  volatile uint32_t SQR1;    
+  volatile uint32_t SQR2;    
+  volatile uint32_t SQR3;    
+  volatile uint32_t JSQR;    
+  volatile uint32_t JDR1;    
+  volatile uint32_t JDR2;    
+  volatile uint32_t JDR3;    
+  volatile uint32_t JDR4;    
+  volatile uint32_t DR;      
+} ADC_TypeDef;
+
+typedef struct
+{
+  volatile uint32_t CSR;     
+  volatile uint32_t CCR;     
+  volatile uint32_t CDR;    
+ 
+} ADC_Common_TypeDef;
+
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t TIR;   
+  volatile uint32_t TDTR;  
+  volatile uint32_t TDLR;  
+  volatile uint32_t TDHR;  
+} CAN_TxMailBox_TypeDef;
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t RIR;   
+  volatile uint32_t RDTR;  
+  volatile uint32_t RDLR;  
+  volatile uint32_t RDHR;  
+} CAN_FIFOMailBox_TypeDef;
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t FR1;  
+  volatile uint32_t FR2;  
+} CAN_FilterRegister_TypeDef;
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t              MCR;                  
+  volatile uint32_t              MSR;                  
+  volatile uint32_t              TSR;                  
+  volatile uint32_t              RF0R;                 
+  volatile uint32_t              RF1R;                 
+  volatile uint32_t              IER;                  
+  volatile uint32_t              ESR;                  
+  volatile uint32_t              BTR;                  
+  uint32_t                   RESERVED0[88];        
+  CAN_TxMailBox_TypeDef      sTxMailBox[3];        
+  CAN_FIFOMailBox_TypeDef    sFIFOMailBox[2];      
+  uint32_t                   RESERVED1[12];        
+  volatile uint32_t              FMR;                  
+  volatile uint32_t              FM1R;                 
+  uint32_t                   RESERVED2;            
+  volatile uint32_t              FS1R;                 
+  uint32_t                   RESERVED3;            
+  volatile uint32_t              FFA1R;                
+  uint32_t                   RESERVED4;            
+  volatile uint32_t              FA1R;                 
+  uint32_t                   RESERVED5[8];         
+  CAN_FilterRegister_TypeDef sFilterRegister[28];  
+} CAN_TypeDef;
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t DR;          
+  volatile uint8_t  IDR;         
+  uint8_t       RESERVED0;   
+  uint16_t      RESERVED1;   
+  volatile uint32_t CR;          
+} CRC_TypeDef;
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t CR;        
+  volatile uint32_t SWTRIGR;   
+  volatile uint32_t DHR12R1;   
+  volatile uint32_t DHR12L1;   
+  volatile uint32_t DHR8R1;    
+  volatile uint32_t DHR12R2;   
+  volatile uint32_t DHR12L2;   
+  volatile uint32_t DHR8R2;    
+  volatile uint32_t DHR12RD;   
+  volatile uint32_t DHR12LD;   
+  volatile uint32_t DHR8RD;    
+  volatile uint32_t DOR1;      
+  volatile uint32_t DOR2;      
+  volatile uint32_t SR;        
+} DAC_TypeDef;
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t IDCODE;   
+  volatile uint32_t CR;       
+  volatile uint32_t APB1FZ;   
+  volatile uint32_t APB2FZ;   
+} DBGMCU_TypeDef;
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t CR;        
+  volatile uint32_t SR;        
+  volatile uint32_t RISR;      
+  volatile uint32_t IER;       
+  volatile uint32_t MISR;      
+  volatile uint32_t ICR;       
+  volatile uint32_t ESCR;      
+  volatile uint32_t ESUR;      
+  volatile uint32_t CWSTRTR;   
+  volatile uint32_t CWSIZER;   
+  volatile uint32_t DR;        
+} DCMI_TypeDef;
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t CR;      
+  volatile uint32_t NDTR;    
+  volatile uint32_t PAR;     
+  volatile uint32_t M0AR;    
+  volatile uint32_t M1AR;    
+  volatile uint32_t FCR;     
+} DMA_Stream_TypeDef;
+
+typedef struct
+{
+  volatile uint32_t LISR;    
+  volatile uint32_t HISR;    
+  volatile uint32_t LIFCR;   
+  volatile uint32_t HIFCR;   
+} DMA_TypeDef;
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t MACCR;
+  volatile uint32_t MACFFR;
+  volatile uint32_t MACHTHR;
+  volatile uint32_t MACHTLR;
+  volatile uint32_t MACMIIAR;
+  volatile uint32_t MACMIIDR;
+  volatile uint32_t MACFCR;
+  volatile uint32_t MACVLANTR;              
+  uint32_t      RESERVED0[2];
+  volatile uint32_t MACRWUFFR;              
+  volatile uint32_t MACPMTCSR;
+  uint32_t      RESERVED1;
+  volatile uint32_t MACDBGR;
+  volatile uint32_t MACSR;                  
+  volatile uint32_t MACIMR;
+  volatile uint32_t MACA0HR;
+  volatile uint32_t MACA0LR;
+  volatile uint32_t MACA1HR;
+  volatile uint32_t MACA1LR;
+  volatile uint32_t MACA2HR;
+  volatile uint32_t MACA2LR;
+  volatile uint32_t MACA3HR;
+  volatile uint32_t MACA3LR;                
+  uint32_t      RESERVED2[40];
+  volatile uint32_t MMCCR;                  
+  volatile uint32_t MMCRIR;
+  volatile uint32_t MMCTIR;
+  volatile uint32_t MMCRIMR;
+  volatile uint32_t MMCTIMR;                
+  uint32_t      RESERVED3[14];
+  volatile uint32_t MMCTGFSCCR;             
+  volatile uint32_t MMCTGFMSCCR;
+  uint32_t      RESERVED4[5];
+  volatile uint32_t MMCTGFCR;
+  uint32_t      RESERVED5[10];
+  volatile uint32_t MMCRFCECR;
+  volatile uint32_t MMCRFAECR;
+  uint32_t      RESERVED6[10];
+  volatile uint32_t MMCRGUFCR;
+  uint32_t      RESERVED7[334];
+  volatile uint32_t PTPTSCR;
+  volatile uint32_t PTPSSIR;
+  volatile uint32_t PTPTSHR;
+  volatile uint32_t PTPTSLR;
+  volatile uint32_t PTPTSHUR;
+  volatile uint32_t PTPTSLUR;
+  volatile uint32_t PTPTSAR;
+  volatile uint32_t PTPTTHR;
+  volatile uint32_t PTPTTLR;
+  volatile uint32_t RESERVED8;
+  volatile uint32_t PTPTSSR;
+  uint32_t      RESERVED9[565];
+  volatile uint32_t DMABMR;
+  volatile uint32_t DMATPDR;
+  volatile uint32_t DMARPDR;
+  volatile uint32_t DMARDLAR;
+  volatile uint32_t DMATDLAR;
+  volatile uint32_t DMASR;
+  volatile uint32_t DMAOMR;
+  volatile uint32_t DMAIER;
+  volatile uint32_t DMAMFBOCR;
+  volatile uint32_t DMARSWTR;
+  uint32_t      RESERVED10[8];
+  volatile uint32_t DMACHTDR;
+  volatile uint32_t DMACHRDR;
+  volatile uint32_t DMACHTBAR;
+  volatile uint32_t DMACHRBAR;
+} ETH_TypeDef;
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t IMR;     
+  volatile uint32_t EMR;     
+  volatile uint32_t RTSR;    
+  volatile uint32_t FTSR;    
+  volatile uint32_t SWIER;   
+  volatile uint32_t PR;      
+} EXTI_TypeDef;
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t ACR;       
+  volatile uint32_t KEYR;      
+  volatile uint32_t OPTKEYR;   
+  volatile uint32_t SR;        
+  volatile uint32_t CR;        
+  volatile uint32_t OPTCR;     
+  volatile uint32_t OPTCR1;    
+} FLASH_TypeDef;
+
+
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t BTCR[8];     
+} FSMC_Bank1_TypeDef;
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t BWTR[7];     
+} FSMC_Bank1E_TypeDef;
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t PCR2;        
+  volatile uint32_t SR2;         
+  volatile uint32_t PMEM2;       
+  volatile uint32_t PATT2;       
+  uint32_t      RESERVED0;   
+  volatile uint32_t ECCR2;       
+  uint32_t      RESERVED1;   
+  uint32_t      RESERVED2;   
+  volatile uint32_t PCR3;        
+  volatile uint32_t SR3;         
+  volatile uint32_t PMEM3;       
+  volatile uint32_t PATT3;       
+  uint32_t      RESERVED3;   
+  volatile uint32_t ECCR3;       
+} FSMC_Bank2_3_TypeDef;
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t PCR4;        
+  volatile uint32_t SR4;         
+  volatile uint32_t PMEM4;       
+  volatile uint32_t PATT4;       
+  volatile uint32_t PIO4;        
+} FSMC_Bank4_TypeDef;
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t MODER;     
+  volatile uint32_t OTYPER;    
+  volatile uint32_t OSPEEDR;   
+  volatile uint32_t PUPDR;     
+  volatile uint32_t IDR;       
+  volatile uint32_t ODR;       
+  volatile uint32_t BSRR;      
+  volatile uint32_t LCKR;      
+  volatile uint32_t AFR[2];    
+} GPIO_TypeDef;
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t MEMRMP;        
+  volatile uint32_t PMC;           
+  volatile uint32_t EXTICR[4];     
+  uint32_t      RESERVED[2];   
+  volatile uint32_t CMPCR;         
+} SYSCFG_TypeDef;
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t CR1;         
+  volatile uint32_t CR2;         
+  volatile uint32_t OAR1;        
+  volatile uint32_t OAR2;        
+  volatile uint32_t DR;          
+  volatile uint32_t SR1;         
+  volatile uint32_t SR2;         
+  volatile uint32_t CCR;         
+  volatile uint32_t TRISE;       
+} I2C_TypeDef;
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t KR;    
+  volatile uint32_t PR;    
+  volatile uint32_t RLR;   
+  volatile uint32_t SR;    
+} IWDG_TypeDef;
+
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t CR;    
+  volatile uint32_t CSR;   
+} PWR_TypeDef;
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t CR;             
+  volatile uint32_t PLLCFGR;        
+  volatile uint32_t CFGR;           
+  volatile uint32_t CIR;            
+  volatile uint32_t AHB1RSTR;       
+  volatile uint32_t AHB2RSTR;       
+  volatile uint32_t AHB3RSTR;       
+  uint32_t      RESERVED0;      
+  volatile uint32_t APB1RSTR;       
+  volatile uint32_t APB2RSTR;       
+  uint32_t      RESERVED1[2];   
+  volatile uint32_t AHB1ENR;        
+  volatile uint32_t AHB2ENR;        
+  volatile uint32_t AHB3ENR;        
+  uint32_t      RESERVED2;      
+  volatile uint32_t APB1ENR;        
+  volatile uint32_t APB2ENR;        
+  uint32_t      RESERVED3[2];   
+  volatile uint32_t AHB1LPENR;      
+  volatile uint32_t AHB2LPENR;      
+  volatile uint32_t AHB3LPENR;      
+  uint32_t      RESERVED4;      
+  volatile uint32_t APB1LPENR;      
+  volatile uint32_t APB2LPENR;      
+  uint32_t      RESERVED5[2];   
+  volatile uint32_t BDCR;           
+  volatile uint32_t CSR;            
+  uint32_t      RESERVED6[2];   
+  volatile uint32_t SSCGR;          
+  volatile uint32_t PLLI2SCFGR;     
+} RCC_TypeDef;
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t TR;       
+  volatile uint32_t DR;       
+  volatile uint32_t CR;       
+  volatile uint32_t ISR;      
+  volatile uint32_t PRER;     
+  volatile uint32_t WUTR;     
+  volatile uint32_t CALIBR;   
+  volatile uint32_t ALRMAR;   
+  volatile uint32_t ALRMBR;   
+  volatile uint32_t WPR;      
+  volatile uint32_t SSR;      
+  volatile uint32_t SHIFTR;   
+  volatile uint32_t TSTR;     
+  volatile uint32_t TSDR;     
+  volatile uint32_t TSSSR;    
+  volatile uint32_t CALR;     
+  volatile uint32_t TAFCR;    
+  volatile uint32_t ALRMASSR; 
+  volatile uint32_t ALRMBSSR; 
+  uint32_t RESERVED7;     
+  volatile uint32_t BKP0R;    
+  volatile uint32_t BKP1R;    
+  volatile uint32_t BKP2R;    
+  volatile uint32_t BKP3R;    
+  volatile uint32_t BKP4R;    
+  volatile uint32_t BKP5R;    
+  volatile uint32_t BKP6R;    
+  volatile uint32_t BKP7R;    
+  volatile uint32_t BKP8R;    
+  volatile uint32_t BKP9R;    
+  volatile uint32_t BKP10R;   
+  volatile uint32_t BKP11R;   
+  volatile uint32_t BKP12R;   
+  volatile uint32_t BKP13R;   
+  volatile uint32_t BKP14R;   
+  volatile uint32_t BKP15R;   
+  volatile uint32_t BKP16R;   
+  volatile uint32_t BKP17R;   
+  volatile uint32_t BKP18R;   
+  volatile uint32_t BKP19R;   
+} RTC_TypeDef;
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t POWER;                  
+  volatile uint32_t CLKCR;                  
+  volatile uint32_t ARG;                    
+  volatile uint32_t CMD;                    
+  volatile const uint32_t  RESPCMD;         
+  volatile const uint32_t  RESP1;           
+  volatile const uint32_t  RESP2;           
+  volatile const uint32_t  RESP3;           
+  volatile const uint32_t  RESP4;           
+  volatile uint32_t DTIMER;                 
+  volatile uint32_t DLEN;                   
+  volatile uint32_t DCTRL;                  
+  volatile const uint32_t  DCOUNT;          
+  volatile const uint32_t  STA;             
+  volatile uint32_t ICR;                    
+  volatile uint32_t MASK;                   
+  uint32_t      RESERVED0[2];           
+  volatile const uint32_t  FIFOCNT;         
+  uint32_t      RESERVED1[13];          
+  volatile uint32_t FIFO;                   
+} SDIO_TypeDef;
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t CR1;         
+  volatile uint32_t CR2;         
+  volatile uint32_t SR;          
+  volatile uint32_t DR;          
+  volatile uint32_t CRCPR;       
+  volatile uint32_t RXCRCR;      
+  volatile uint32_t TXCRCR;      
+  volatile uint32_t I2SCFGR;     
+  volatile uint32_t I2SPR;       
+} SPI_TypeDef;
+
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t CR1;          
+  volatile uint32_t CR2;          
+  volatile uint32_t SMCR;         
+  volatile uint32_t DIER;         
+  volatile uint32_t SR;           
+  volatile uint32_t EGR;          
+  volatile uint32_t CCMR1;        
+  volatile uint32_t CCMR2;        
+  volatile uint32_t CCER;         
+  volatile uint32_t CNT;          
+  volatile uint32_t PSC;          
+  volatile uint32_t ARR;          
+  volatile uint32_t RCR;          
+  volatile uint32_t CCR1;         
+  volatile uint32_t CCR2;         
+  volatile uint32_t CCR3;         
+  volatile uint32_t CCR4;         
+  volatile uint32_t BDTR;         
+  volatile uint32_t DCR;          
+  volatile uint32_t DMAR;         
+  volatile uint32_t OR;           
+} TIM_TypeDef;
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t SR;          
+  volatile uint32_t DR;          
+  volatile uint32_t BRR;         
+  volatile uint32_t CR1;         
+  volatile uint32_t CR2;         
+  volatile uint32_t CR3;         
+  volatile uint32_t GTPR;        
+} USART_TypeDef;
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t CR;    
+  volatile uint32_t CFR;   
+  volatile uint32_t SR;    
+} WWDG_TypeDef;
+
+
+
+ 
+
+typedef struct
+{
+  volatile uint32_t CR;   
+  volatile uint32_t SR;   
+  volatile uint32_t DR;   
+} RNG_TypeDef;
+
+
+
+ 
+typedef struct
+{
+  volatile uint32_t GOTGCTL;               
+  volatile uint32_t GOTGINT;               
+  volatile uint32_t GAHBCFG;               
+  volatile uint32_t GUSBCFG;               
+  volatile uint32_t GRSTCTL;               
+  volatile uint32_t GINTSTS;               
+  volatile uint32_t GINTMSK;               
+  volatile uint32_t GRXSTSR;               
+  volatile uint32_t GRXSTSP;               
+  volatile uint32_t GRXFSIZ;               
+  volatile uint32_t DIEPTXF0_HNPTXFSIZ;    
+  volatile uint32_t HNPTXSTS;              
+  uint32_t Reserved30[2];              
+  volatile uint32_t GCCFG;                 
+  volatile uint32_t CID;                   
+  uint32_t  Reserved40[48];            
+  volatile uint32_t HPTXFSIZ;              
+  volatile uint32_t DIEPTXF[0x0F];         
+} USB_OTG_GlobalTypeDef;
+
+
+
+ 
+typedef struct
+{
+  volatile uint32_t DCFG;             
+  volatile uint32_t DCTL;             
+  volatile uint32_t DSTS;             
+  uint32_t Reserved0C;            
+  volatile uint32_t DIEPMSK;          
+  volatile uint32_t DOEPMSK;          
+  volatile uint32_t DAINT;            
+  volatile uint32_t DAINTMSK;         
+  uint32_t  Reserved20;           
+  uint32_t Reserved9;             
+  volatile uint32_t DVBUSDIS;         
+  volatile uint32_t DVBUSPULSE;       
+  volatile uint32_t DTHRCTL;          
+  volatile uint32_t DIEPEMPMSK;       
+  volatile uint32_t DEACHINT;         
+  volatile uint32_t DEACHMSK;         
+  uint32_t Reserved40;            
+  volatile uint32_t DINEP1MSK;        
+  uint32_t  Reserved44[15];       
+  volatile uint32_t DOUTEP1MSK;       
+} USB_OTG_DeviceTypeDef;
+
+
+
+ 
+typedef struct
+{
+  volatile uint32_t DIEPCTL;            
+  uint32_t Reserved04;              
+  volatile uint32_t DIEPINT;            
+  uint32_t Reserved0C;              
+  volatile uint32_t DIEPTSIZ;           
+  volatile uint32_t DIEPDMA;            
+  volatile uint32_t DTXFSTS;            
+  uint32_t Reserved18;              
+} USB_OTG_INEndpointTypeDef;
+
+
+
+ 
+typedef struct
+{
+  volatile uint32_t DOEPCTL;        
+  uint32_t Reserved04;          
+  volatile uint32_t DOEPINT;        
+  uint32_t Reserved0C;          
+  volatile uint32_t DOEPTSIZ;       
+  volatile uint32_t DOEPDMA;        
+  uint32_t Reserved18[2];       
+} USB_OTG_OUTEndpointTypeDef;
+
+
+
+ 
+typedef struct
+{
+  volatile uint32_t HCFG;              
+  volatile uint32_t HFIR;              
+  volatile uint32_t HFNUM;             
+  uint32_t Reserved40C;            
+  volatile uint32_t HPTXSTS;           
+  volatile uint32_t HAINT;             
+  volatile uint32_t HAINTMSK;          
+} USB_OTG_HostTypeDef;
+
+
+
+ 
+typedef struct
+{
+  volatile uint32_t HCCHAR;            
+  volatile uint32_t HCSPLT;            
+  volatile uint32_t HCINT;             
+  volatile uint32_t HCINTMSK;          
+  volatile uint32_t HCTSIZ;            
+  volatile uint32_t HCDMA;             
+  uint32_t Reserved[2];            
+} USB_OTG_HostChannelTypeDef;
+
+
+
+ 
+
+
+
+ 
+#line 921 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+#line 960 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 970 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 
+#line 979 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 1016 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+#line 1046 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+ 
+
+
+
+ 
+#line 1093 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 
+#line 1142 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+
+ 
+
+
+ 
+#line 1196 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 1250 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 1300 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 1356 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 1418 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+#line 1489 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 1539 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 1589 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 1628 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+#line 1656 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 1712 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+#line 1753 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 1761 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+#line 1803 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 
+#line 1831 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 1881 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 1894 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 1907 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 1921 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 1935 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 1980 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 1991 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 1998 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 2005 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 2034 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+ 
+ 
+#line 2053 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 2064 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 2078 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 2092 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 2109 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 2120 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 2134 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 2148 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 2165 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 2176 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 2190 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 2204 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 2218 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 2229 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 2243 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 2257 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 2271 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 2282 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 2296 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 2310 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+ 
+#line 2319 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 2408 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 2497 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 2586 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 2675 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+ 
+#line 2774 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 2872 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 2970 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 3068 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 3166 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 3264 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 3362 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 3460 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 3558 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 3656 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 3754 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 3852 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 3950 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 4048 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 4146 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 4244 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 4342 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 4440 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 4538 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 4636 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 4734 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 4832 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 4930 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 5028 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 5126 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 5224 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 5322 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 5420 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+ 
+
+ 
+#line 5462 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 5469 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+#line 5483 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 5499 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 5506 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+#line 5520 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 5527 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 5535 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+#line 5573 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 5581 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 5589 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+#line 5607 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+ 
+ 
+ 
+ 
+ 
+#line 5648 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 5659 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 5676 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 
+#line 5683 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 5700 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 
+
+
+ 
+#line 5719 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+
+
+ 
+#line 5743 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+ 
+#line 5760 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 5774 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 5782 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 5790 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 5804 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+ 
+ 
+ 
+ 
+ 
+#line 5883 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+#line 5909 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 5928 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 5990 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 6052 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 6114 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 6176 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+#line 6268 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 6296 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 6367 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 6392 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 6463 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 6534 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 6605 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 6676 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+ 
+ 
+ 
+ 
+ 
+#line 6694 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+#line 6711 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 6734 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 6769 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 6777 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 6818 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 6835 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 
+#line 6845 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+ 
+ 
+ 
+ 
+ 
+#line 6858 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 6907 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 6915 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 6964 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 6972 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 7021 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 7029 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 7078 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 7087 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7095 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7107 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7115 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7123 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7131 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+ 
+#line 7146 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7154 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7166 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7174 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7182 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7190 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+ 
+#line 7205 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7213 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7225 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7233 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7241 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7249 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+ 
+#line 7264 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7272 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7284 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7292 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7300 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7308 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+ 
+#line 7323 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7331 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7343 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7351 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+ 
+#line 7366 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7374 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7386 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7394 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+ 
+#line 7409 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7417 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7429 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7437 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+ 
+#line 7452 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7460 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7472 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7480 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+ 
+#line 7497 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+
+
+
+
+#line 7515 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7523 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7530 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 7541 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+
+
+
+
+#line 7559 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7567 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7574 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 7585 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+
+
+
+
+#line 7603 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7611 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7618 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 7641 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 7664 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 7687 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 7700 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7712 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7724 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7736 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 7749 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7761 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7773 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7785 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 7798 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7810 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7822 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7834 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 7847 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7859 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7871 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7883 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 7896 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7908 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7920 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7932 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 7945 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7957 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7969 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 7981 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 7994 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 8006 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 8018 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 8030 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+#line 8127 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 8209 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 8259 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 8277 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 8359 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 8409 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 8491 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 8541 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 8591 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 8609 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 8659 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 
+#line 8676 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 8774 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 8856 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 
+#line 8908 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 
+#line 8965 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 9007 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 9065 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 9107 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+#line 9157 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 9168 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 9184 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+#line 9219 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+ 
+#line 9231 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+#line 9280 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 9306 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 9317 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+ 
+#line 9341 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+#line 9354 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+#line 9378 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 9385 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 9404 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+ 
+#line 9430 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+#line 9446 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 9455 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 9467 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 9486 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+ 
+
+
+#line 9497 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 9508 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 9521 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+#line 9535 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 9543 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+#line 9576 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 9586 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 9594 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+ 
+#line 9608 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+ 
+#line 9624 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+
+
+
+
+
+
+#line 9642 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 9649 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+ 
+#line 9675 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 9697 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 9716 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+ 
+#line 9764 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 9775 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 
+
+
+
+
+
+ 
+#line 9851 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 9886 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+ 
+#line 9951 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 
+
+
+ 
+
+
+#line 9966 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+ 
+
+
+
+
+
+
+ 
+#line 10047 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 10088 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 10138 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 10157 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 10168 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+#line 10244 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 10285 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 10296 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+#line 10309 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 10341 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 
+
+
+
+ 
+#line 10358 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 10372 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 10379 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+#line 10393 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 10410 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+ 
+ 
+ 
+ 
+
+
+ 
+
+
+ 
+#line 10463 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 10507 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 10577 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+ 
+#line 10630 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 10638 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+#line 10651 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 10721 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 10791 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+#line 10809 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 10852 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 10882 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+#line 10910 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 10958 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+ 
+#line 10973 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 10985 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+#line 11115 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+#line 11128 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+#line 11166 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+#line 11220 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 11228 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 11241 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+#line 11320 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 11361 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 11435 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+ 
+#line 11463 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 11470 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 11501 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 11524 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 11553 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 11611 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 11622 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+ 
+#line 11654 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+ 
+#line 11666 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+ 
+#line 11679 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+ 
+#line 11692 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+ 
+#line 11705 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 11719 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+ 
+#line 11732 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+ 
+#line 11745 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+ 
+#line 11758 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+ 
+#line 11771 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 11785 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+ 
+#line 11798 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+ 
+#line 11811 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+ 
+#line 11824 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+ 
+#line 11837 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 11851 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+ 
+#line 11863 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+ 
+#line 11875 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+ 
+#line 11887 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+ 
+#line 11899 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 11907 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+ 
+ 
+ 
+ 
+ 
+#line 11929 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+#line 11956 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 11963 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 11988 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 11996 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 12003 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+#line 12015 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+#line 12028 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 12075 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 12113 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 12139 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+
+
+#line 12153 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 12160 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+
+
+
+
+#line 12177 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 12184 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+#line 12204 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+#line 12218 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+
+
+#line 12232 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 12239 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+
+
+
+
+#line 12256 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 12263 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+#line 12283 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+#line 12297 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 12344 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+#line 12397 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+#line 12422 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 12432 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 12441 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+#line 12464 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+#line 12502 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+#line 12515 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 12562 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 12585 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+
+
+
+
+ 
+#line 12633 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 12646 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+#line 12667 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 
+#line 12675 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+ 
+#line 12691 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 
+#line 12699 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+#line 12731 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 12745 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+ 
+#line 12804 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 
+
+
+ 
+#line 12823 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+ 
+ 
+ 
+ 
+ 
+#line 12891 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 12935 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+#line 12975 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+#line 13013 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 13021 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+ 
+#line 13060 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 13140 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 13157 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 13165 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+#line 13195 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+#line 13220 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+#line 13245 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+ 
+ 
+
+ 
+#line 13274 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 13285 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 13296 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 13307 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 13318 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+ 
+ 
+
+ 
+#line 13384 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 13403 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+#line 13421 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+#line 13434 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+#line 13457 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+ 
+ 
+
+ 
+#line 13527 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+#line 13561 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 
+#line 13654 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 13704 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 13751 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 13765 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+#line 13822 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+#line 13833 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+#line 13844 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 13855 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+#line 13886 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 13906 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 13920 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 13942 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+#line 13955 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+#line 13972 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 13994 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+#line 14058 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 14075 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+#line 14091 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 14117 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 14133 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 14145 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+#line 14188 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 
+#line 14267 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 14347 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 14355 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+#line 14374 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 14382 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+#line 14406 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+
+
+
+
+#line 14428 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 14439 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 14447 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 14463 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 14479 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+#line 14492 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 14512 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 14520 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+#line 14554 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 14583 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 14592 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 14600 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+ 
+#line 14641 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 14649 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 14663 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 14672 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 14698 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+#line 14717 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 14749 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+#line 14762 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 14773 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 14785 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 14820 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 14861 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 14896 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+#line 14908 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 
+#line 14923 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+#line 14946 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+#line 14987 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 15022 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 
+
+#line 15030 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+ 
+#line 15047 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+ 
+#line 15060 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+#line 15074 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 15082 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+#line 15090 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+#line 15140 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 15151 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+
+
+ 
+
+
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+#line 15199 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 15213 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 15223 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 15231 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 15239 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+ 
+#line 15251 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 15261 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 15269 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 15277 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 15285 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 15295 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 15305 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 
+
+
+
+ 
+#line 15316 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+#line 15379 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 15391 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 15399 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 15413 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+
+ 
+#line 15426 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 15436 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 15444 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 15454 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+#line 15464 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+
+ 
+#line 15478 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 
+#line 15485 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+#line 15502 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+ 
+
+
+ 
+
+
+
+
+ 
+
+
+ 
+
+
+
+
+
+ 
+#line 15527 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+#line 15565 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+#line 133 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+#line 176 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+
+
+
+ 
+
+
+
+ 
+typedef enum
+{
+  RESET = 0U,
+  SET = !RESET
+} FlagStatus, ITStatus;
+
+typedef enum
+{
+  DISABLE = 0U,
+  ENABLE = !DISABLE
+} FunctionalState;
+
+
+typedef enum
+{
+  SUCCESS = 0U,
+  ERROR = !SUCCESS
+} ErrorStatus;
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+#line 236 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+
+ 
+#line 245 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+
+ 
+#line 254 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+
+ 
+#line 263 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+
+ 
+#line 272 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+
+ 
+#line 281 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+
+
+
+ 
+
+#line 1 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+ 
+#line 296 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+
+
+#line 288 "../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+#line 30 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+#line 1 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+
+
+
+ 
+#line 46 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+ 
+
+
+
+ 
+#line 93 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 101 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+ 
+#line 150 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 217 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+#line 235 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+ 
+
+
+
+ 
+#line 249 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+#line 277 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+
+
+
+#line 289 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+#line 322 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+
+
+#line 367 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 377 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 439 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+#line 567 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+ 
+
+
+
+ 
+
+#line 584 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+ 
+
+
+
+ 
+
+#line 609 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 618 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 717 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+
+ 
+
+
+
+
+ 
+#line 738 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 789 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+
+
+#line 801 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 808 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+
+
+
+
+
+
+#line 824 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 839 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+ 
+
+
+
+ 
+#line 867 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+ 
+
+
+
+ 
+#line 883 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 892 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+
+
+#line 907 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 1019 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 1035 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+ 
+
+
+
+ 
+#line 1060 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+#line 1217 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+ 
+#line 1239 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 1300 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 1322 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+#line 1363 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+#line 1393 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+ 
+
+
+
+ 
+
+
+
+#line 1431 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 1441 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 1460 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+
+
+
+
+
+
+
+#line 1487 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+#line 1571 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+ 
+
+
+
+ 
+
+#line 1588 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 1600 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 1641 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+#line 1691 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 1705 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+#line 1756 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+#line 1826 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+ 
+
+
+
+ 
+#line 1841 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+#line 1874 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 1885 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+ 
+
+
+
+ 
+
+#line 1915 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 1923 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+
+
+
+#line 1939 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+#line 2028 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+ 
+
+
+
+ 
+#line 2042 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+#line 2081 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+ 
+#line 2142 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+#line 2170 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 2191 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 2202 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 2211 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 2224 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 2233 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+#line 2269 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 2284 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+#line 2317 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+ 
+
+
+
+ 
+#line 2485 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+#line 2495 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+ 
+
+#line 2511 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+#line 2534 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+ 
+
+
+
+ 
+
+#line 2562 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+#line 2640 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+ 
+
+
+
+
+ 
+#line 2690 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 2704 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+#line 2984 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 2998 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 3215 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 3234 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 3241 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 3262 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 3410 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+ 
+
+
+
+#line 3435 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 3456 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 3573 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 3582 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 3599 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 3614 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+
+
+
+#line 3643 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 3669 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+
+
+#line 3696 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+
+
+#line 3708 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 3717 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 3750 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 3768 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+
+
+
+
+
+
+
+
+
+#line 3786 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 3809 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 3849 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 3935 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+#line 3961 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 3989 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 3996 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 4011 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+#line 4039 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 4061 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+ 
+
+
+
+
+#line 4091 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 4098 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 4110 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+ 
+
+
+
+ 
+
+#line 4124 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+#line 4145 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+#line 4199 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+#line 4225 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 4234 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+#line 4243 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+
+#line 4276 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+#line 4303 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+#line 4323 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+#line 4357 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+#line 4384 "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+#line 31 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+#line 1 "D:\\Keil_v5\\Arm\\Core\\ARM\\AC5\\Bin\\..\\include\\stddef.h"
+ 
+
+
+
+
+
+
+ 
+
+ 
+ 
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+#line 34 "D:\\Keil_v5\\Arm\\Core\\ARM\\AC5\\Bin\\..\\include\\stddef.h"
+
+
+
+
+  typedef signed int ptrdiff_t;
+
+
+
+  
+
+
+
+    typedef unsigned int size_t;    
+#line 57 "D:\\Keil_v5\\Arm\\Core\\ARM\\AC5\\Bin\\..\\include\\stddef.h"
+
+
+
+   
+
+
+
+      typedef unsigned short wchar_t;  
+#line 82 "D:\\Keil_v5\\Arm\\Core\\ARM\\AC5\\Bin\\..\\include\\stddef.h"
+
+
+
+    
+
+
+
+
+   
+
+
+
+
+  typedef long double max_align_t;
+
+
+
+
+
+
+
+
+
+#line 114 "D:\\Keil_v5\\Arm\\Core\\ARM\\AC5\\Bin\\..\\include\\stddef.h"
+
+
+
+ 
+
+#line 32 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+
+ 
+
+
+
+   
+typedef enum 
+{
+  HAL_OK       = 0x00U,
+  HAL_ERROR    = 0x01U,
+  HAL_BUSY     = 0x02U,
+  HAL_TIMEOUT  = 0x03U
+} HAL_StatusTypeDef;
+
+
+
+ 
+typedef enum 
+{
+  HAL_UNLOCKED = 0x00U,
+  HAL_LOCKED   = 0x01U  
+} HAL_LockTypeDef;
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+#line 104 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+
+
+
+
+
+
+
+#line 126 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+
+
+ 
+#line 155 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+ 
+
+
+#line 188 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+
+
+
+  
+
+
+
+ 
+
+
+#line 205 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+
+
+
+
+
+
+
+
+#line 28 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+ 
+ 
+#line 1 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+ 
+#line 28 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+typedef struct
+{
+  uint32_t PLLState;   
+ 
+
+  uint32_t PLLSource;  
+ 
+
+  uint32_t PLLM;       
+ 
+
+  uint32_t PLLN;       
+
+ 
+
+  uint32_t PLLP;       
+ 
+
+  uint32_t PLLQ;       
+ 
+#line 73 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+} RCC_PLLInitTypeDef;
+
+#line 174 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 200 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 291 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 376 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+
+
+
+ 
+typedef struct
+{
+
+
+
+
+
+  uint32_t PLLI2SN;    
+
+
+ 
+
+  uint32_t PLLI2SR;    
+
+ 
+
+} RCC_PLLI2SInitTypeDef;
+
+
+
+ 
+typedef struct
+{
+  uint32_t PeriphClockSelection; 
+ 
+
+  RCC_PLLI2SInitTypeDef PLLI2S;  
+ 
+
+  uint32_t RTCClockSelection;      
+ 
+
+
+
+
+} RCC_PeriphCLKInitTypeDef;
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+ 
+#line 452 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+ 
+
+ 
+#line 462 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+ 
+
+ 
+#line 479 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+ 
+
+ 
+#line 493 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+ 
+
+ 
+#line 505 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+ 
+
+ 
+#line 517 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+ 
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+ 
+#line 546 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+ 
+
+
+
+ 
+#line 560 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+ 
+
+
+
+ 
+#line 573 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+ 
+
+#line 598 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 627 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 720 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 775 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 854 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 888 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 905 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 920 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+#line 952 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+
+ 
+
+ 
+
+
+ 
+ 
+#line 2026 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+ 
+
+ 
+
+
+
+
+
+
+
+ 
+#line 2118 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+ 
+#line 2154 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+
+ 
+#line 2168 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+ 
+
+
+
+
+
+
+
+ 
+#line 2189 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 2201 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+ 
+#line 2211 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+ 
+#line 2222 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+#line 2247 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 2258 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 2277 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+#line 2307 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+ 
+
+
+
+
+
+
+
+ 
+#line 2326 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+#line 2478 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+ 
+
+
+
+
+
+
+
+ 
+#line 2505 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 2522 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+ 
+
+
+
+
+
+
+
+ 
+#line 2575 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 2582 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+ 
+
+
+
+
+
+
+
+ 
+#line 2599 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 2606 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+ 
+
+
+
+
+ 
+#line 2628 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 2637 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+ 
+
+
+
+
+ 
+#line 2652 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+
+
+
+
+#line 2665 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+#line 2709 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 2726 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+#line 2772 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 2789 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+#line 2819 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+#line 2861 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 2878 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+#line 2896 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 2903 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+ 
+
+ 
+
+ 
+#line 3288 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+ 
+
+ 
+#line 3571 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+ 
+
+ 
+#line 3950 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+ 
+
+ 
+#line 4757 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+ 
+
+ 
+#line 5795 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+ 
+
+ 
+#line 5841 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+#line 5876 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+ 
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+#line 5959 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+#line 6004 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 6027 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+ 
+
+ 
+#line 6117 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+ 
+
+ 
+#line 6136 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 6155 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 6167 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+#line 6226 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 6391 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 6440 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 6674 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 6729 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 6753 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+ 
+
+#line 6780 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 6793 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+HAL_StatusTypeDef HAL_RCCEx_PeriphCLKConfig(RCC_PeriphCLKInitTypeDef  *PeriphClkInit);
+void HAL_RCCEx_GetPeriphCLKConfig(RCC_PeriphCLKInitTypeDef  *PeriphClkInit);
+
+uint32_t HAL_RCCEx_GetPeriphCLKFreq(uint32_t PeriphClk);
+
+#line 6818 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+HAL_StatusTypeDef HAL_RCCEx_EnablePLLI2S(RCC_PLLI2SInitTypeDef  *PLLI2SInit);
+HAL_StatusTypeDef HAL_RCCEx_DisablePLLI2S(void);
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+ 
+ 
+ 
+
+
+ 
+
+
+
+
+ 
+ 
+#line 6852 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+#line 6878 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+#line 6904 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 6914 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 6987 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 6995 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 7015 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 7067 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 7088 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+#line 7152 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+#line 32 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+typedef struct
+{
+  uint32_t OscillatorType;       
+ 
+
+  uint32_t HSEState;             
+ 
+
+  uint32_t LSEState;             
+ 
+
+  uint32_t HSIState;             
+ 
+
+  uint32_t HSICalibrationValue;  
+ 
+
+  uint32_t LSIState;             
+ 
+
+  RCC_PLLInitTypeDef PLL;         
+} RCC_OscInitTypeDef;
+
+
+
+ 
+typedef struct
+{
+  uint32_t ClockType;             
+ 
+
+  uint32_t SYSCLKSource;          
+ 
+
+  uint32_t AHBCLKDivider;         
+ 
+
+  uint32_t APB1CLKDivider;        
+ 
+
+  uint32_t APB2CLKDivider;        
+ 
+
+} RCC_ClkInitTypeDef;
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+ 
+#line 234 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+#line 287 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+#line 333 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+ 
+
+
+ 
+#line 364 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+ 
+#line 426 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+#line 433 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+
+ 
+
+
+
+
+
+
+
+ 
+#line 450 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+#line 457 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+
+ 
+
+
+
+
+
+
+
+ 
+#line 517 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+#line 525 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+
+ 
+
+
+
+
+
+
+
+ 
+#line 543 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+#line 551 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+
+ 
+
+
+
+
+
+
+
+ 
+#line 618 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+#line 627 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+
+ 
+
+
+
+
+
+
+
+ 
+#line 646 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+#line 655 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+
+ 
+
+
+
+
+ 
+#line 669 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+#line 677 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+
+ 
+
+
+
+
+ 
+#line 692 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+#line 701 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+
+ 
+
+
+
+
+ 
+#line 717 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+#line 727 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+#line 745 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+#line 752 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+#line 771 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+#line 779 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+#line 799 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+#line 808 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+#line 907 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+#line 950 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+ 
+HAL_StatusTypeDef HAL_RCC_DeInit(void);
+HAL_StatusTypeDef HAL_RCC_OscConfig(const RCC_OscInitTypeDef *RCC_OscInitStruct);
+HAL_StatusTypeDef HAL_RCC_ClockConfig(const RCC_ClkInitTypeDef *RCC_ClkInitStruct, uint32_t FLatency);
+
+
+ 
+
+
+
+ 
+ 
+void     HAL_RCC_MCOConfig(uint32_t RCC_MCOx, uint32_t RCC_MCOSource, uint32_t RCC_MCODiv);
+void     HAL_RCC_EnableCSS(void);
+void     HAL_RCC_DisableCSS(void);
+uint32_t HAL_RCC_GetSysClockFreq(void);
+uint32_t HAL_RCC_GetHCLKFreq(void);
+uint32_t HAL_RCC_GetPCLK1Freq(void);
+uint32_t HAL_RCC_GetPCLK2Freq(void);
+void     HAL_RCC_GetOscConfig(RCC_OscInitTypeDef *RCC_OscInitStruct);
+void     HAL_RCC_GetClockConfig(RCC_ClkInitTypeDef *RCC_ClkInitStruct, uint32_t *pFLatency);
+
+ 
+void HAL_RCC_NMI_IRQHandler(void);
+
+ 
+void HAL_RCC_CSSCallback(void);
+
+
+
+ 
+
+
+
+ 
+
+ 
+ 
+ 
+
+
+ 
+
+
+
+
+ 
+
+ 
+ 
+
+
+
+ 
+
+
+ 
+
+
+
+ 
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+
+
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 1408 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+#line 276 "../Core/Inc/stm32f4xx_hal_conf.h"
+
+
+#line 1 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+ 
+
+
+
+
+
+
+
+ 
+#line 29 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+
+
+
+ 
+
+
+
+  
+
+ 
+
+
+ 
+
+
+
+  
+typedef struct
+{
+  uint32_t Pin;       
+ 
+
+  uint32_t Mode;      
+ 
+
+  uint32_t Pull;      
+ 
+
+  uint32_t Speed;     
+ 
+
+  uint32_t Alternate;  
+ 
+}GPIO_InitTypeDef;
+
+
+
+ 
+typedef enum
+{
+  GPIO_PIN_RESET = 0,
+  GPIO_PIN_SET
+}GPIO_PinState;
+
+
+ 
+
+ 
+
+
+
+  
+
+
+
+ 
+#line 102 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+ 
+
+
+   
+
+
+
+
+
+ 
+  
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+ 
+#line 1 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+ 
+
+
+
+
+
+
+
+ 
+#line 29 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h"
+
+
+
+ 
+
+
+
+  
+
+ 
+ 
+
+
+ 
+  
+
+
+ 
+
+ 
+#line 165 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h"
+ 
+
+ 
+#line 280 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h"
+ 
+
+ 
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+ 
+
+ 
+#line 482 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h"
+
+ 
+
+ 
+#line 572 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h"
+ 
+
+ 
+#line 681 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h"
+
+ 
+
+ 
+#line 815 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h"
+
+ 
+#line 907 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h"
+
+ 
+#line 981 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h"
+
+ 
+#line 1101 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h"
+ 
+
+ 
+#line 1224 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h"
+ 
+
+
+  
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+ 
+
+ 
+
+
+ 
+
+
+ 
+
+ 
+ 
+ 
+
+
+ 
+
+
+ 
+
+ 
+
+
+ 
+
+
+ 
+#line 1276 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h"
+
+#line 1290 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h"
+
+
+
+
+
+
+
+#line 1304 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h"
+
+#line 1332 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h"
+
+
+
+ 
+
+
+
+   
+ 
+#line 1366 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h"
+ 
+
+ 
+#line 1393 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h"
+ 
+
+ 
+#line 1415 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h"
+
+
+ 
+
+ 
+#line 1440 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h"
+
+ 
+
+ 
+#line 1460 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h"
+ 
+ 
+
+
+
+
+ 
+#line 1485 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h"
+ 
+
+ 
+#line 1517 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h"
+ 
+
+ 
+#line 1546 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h"
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+  
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+#line 214 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+
+ 
+
+
+ 
+
+
+
+ 
+ 
+void  HAL_GPIO_Init(GPIO_TypeDef  *GPIOx, GPIO_InitTypeDef *GPIO_Init);
+void  HAL_GPIO_DeInit(GPIO_TypeDef  *GPIOx, uint32_t GPIO_Pin);
+
+
+ 
+
+
+
+ 
+ 
+GPIO_PinState HAL_GPIO_ReadPin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);
+void HAL_GPIO_WritePin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, GPIO_PinState PinState);
+void HAL_GPIO_TogglePin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);
+HAL_StatusTypeDef HAL_GPIO_LockPin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);
+void HAL_GPIO_EXTI_IRQHandler(uint16_t GPIO_Pin);
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin);
+
+
+
+  
+
+
+
+  
+ 
+ 
+ 
+
+
+ 
+#line 272 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+
+
+
+ 
+
+ 
+
+
+ 
+#line 299 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+
+
+
+  
+
+
+
+ 
+
+
+
+
+
+
+
+#line 280 "../Core/Inc/stm32f4xx_hal_conf.h"
+
+
+#line 1 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+ 
+#line 29 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h"
+
+
+
+ 
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+typedef enum
+{
+  HAL_EXTI_COMMON_CB_ID          = 0x00U
+} EXTI_CallbackIDTypeDef;
+
+
+
+ 
+typedef struct
+{
+  uint32_t Line;                     
+  void (* PendingCallback)(void);    
+} EXTI_HandleTypeDef;
+
+
+
+ 
+typedef struct
+{
+  uint32_t Line;      
+ 
+  uint32_t Mode;      
+ 
+  uint32_t Trigger;   
+ 
+  uint32_t GPIOSel;   
+
+ 
+} EXTI_ConfigTypeDef;
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+#line 124 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h"
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+#line 182 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h"
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 309 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h"
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+ 
+HAL_StatusTypeDef HAL_EXTI_SetConfigLine(EXTI_HandleTypeDef *hexti, EXTI_ConfigTypeDef *pExtiConfig);
+HAL_StatusTypeDef HAL_EXTI_GetConfigLine(EXTI_HandleTypeDef *hexti, EXTI_ConfigTypeDef *pExtiConfig);
+HAL_StatusTypeDef HAL_EXTI_ClearConfigLine(EXTI_HandleTypeDef *hexti);
+HAL_StatusTypeDef HAL_EXTI_RegisterCallback(EXTI_HandleTypeDef *hexti, EXTI_CallbackIDTypeDef CallbackID, void (*pPendingCbfn)(void));
+HAL_StatusTypeDef HAL_EXTI_GetHandle(EXTI_HandleTypeDef *hexti, uint32_t ExtiLine);
+
+
+ 
+
+
+
+
+ 
+ 
+void HAL_EXTI_IRQHandler(EXTI_HandleTypeDef *hexti);
+uint32_t HAL_EXTI_GetPending(EXTI_HandleTypeDef *hexti, uint32_t Edge);
+void HAL_EXTI_ClearPending(EXTI_HandleTypeDef *hexti, uint32_t Edge);
+void HAL_EXTI_GenerateSWI(EXTI_HandleTypeDef *hexti);
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+#line 284 "../Core/Inc/stm32f4xx_hal_conf.h"
+
+
+#line 1 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+ 
+
+
+
+
+
+
+
+ 
+#line 29 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+
+
+
+ 
+
+
+
+  
+
+ 
+
+
+
+
+ 
+   
+
+
+ 
+typedef struct
+{
+  uint32_t Channel;              
+ 
+
+  uint32_t Direction;            
+
+ 
+
+  uint32_t PeriphInc;            
+ 
+
+  uint32_t MemInc;               
+ 
+
+  uint32_t PeriphDataAlignment;  
+ 
+
+  uint32_t MemDataAlignment;     
+ 
+
+  uint32_t Mode;                 
+
+
+ 
+
+  uint32_t Priority;             
+ 
+
+  uint32_t FIFOMode;             
+
+
+ 
+
+  uint32_t FIFOThreshold;        
+ 
+
+  uint32_t MemBurst;             
+
+
+
+ 
+
+  uint32_t PeriphBurst;          
+
+
+
+ 
+}DMA_InitTypeDef;
+
+
+
+
+ 
+typedef enum
+{
+  HAL_DMA_STATE_RESET             = 0x00U,   
+  HAL_DMA_STATE_READY             = 0x01U,   
+  HAL_DMA_STATE_BUSY              = 0x02U,   
+  HAL_DMA_STATE_TIMEOUT           = 0x03U,   
+  HAL_DMA_STATE_ERROR             = 0x04U,   
+  HAL_DMA_STATE_ABORT             = 0x05U,   
+}HAL_DMA_StateTypeDef;
+
+
+
+ 
+typedef enum
+{
+  HAL_DMA_FULL_TRANSFER           = 0x00U,   
+  HAL_DMA_HALF_TRANSFER           = 0x01U    
+}HAL_DMA_LevelCompleteTypeDef;
+
+
+
+ 
+typedef enum
+{
+  HAL_DMA_XFER_CPLT_CB_ID         = 0x00U,   
+  HAL_DMA_XFER_HALFCPLT_CB_ID     = 0x01U,   
+  HAL_DMA_XFER_M1CPLT_CB_ID       = 0x02U,   
+  HAL_DMA_XFER_M1HALFCPLT_CB_ID   = 0x03U,   
+  HAL_DMA_XFER_ERROR_CB_ID        = 0x04U,   
+  HAL_DMA_XFER_ABORT_CB_ID        = 0x05U,   
+  HAL_DMA_XFER_ALL_CB_ID          = 0x06U    
+}HAL_DMA_CallbackIDTypeDef;
+
+
+
+ 
+typedef struct __DMA_HandleTypeDef
+{
+  DMA_Stream_TypeDef         *Instance;                                                         
+
+  DMA_InitTypeDef            Init;                                                               
+
+  HAL_LockTypeDef            Lock;                                                                
+
+  volatile HAL_DMA_StateTypeDef  State;                                                             
+
+  void                       *Parent;                                                            
+
+  void                       (* XferCpltCallback)( struct __DMA_HandleTypeDef * hdma);          
+
+  void                       (* XferHalfCpltCallback)( struct __DMA_HandleTypeDef * hdma);      
+
+  void                       (* XferM1CpltCallback)( struct __DMA_HandleTypeDef * hdma);        
+  
+  void                       (* XferM1HalfCpltCallback)( struct __DMA_HandleTypeDef * hdma);    
+  
+  void                       (* XferErrorCallback)( struct __DMA_HandleTypeDef * hdma);         
+  
+  void                       (* XferAbortCallback)( struct __DMA_HandleTypeDef * hdma);           
+
+  volatile uint32_t              ErrorCode;                                                         
+  
+  uint32_t                   StreamBaseAddress;                                                 
+
+  uint32_t                   StreamIndex;                                                       
+ 
+}DMA_HandleTypeDef;
+
+
+
+ 
+
+ 
+
+
+
+
+ 
+
+
+
+
+  
+#line 193 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+
+
+ 
+
+
+
+
+  
+#line 219 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+
+
+ 
+
+
+
+
+  
+
+
+
+
+
+ 
+        
+
+
+
+  
+
+
+
+
+  
+
+
+
+
+  
+
+
+
+
+ 
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+  
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+  
+
+
+
+
+ 
+
+
+
+
+  
+
+
+
+
+ 
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+  
+#line 382 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+
+
+ 
+
+
+
+ 
+ 
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+ 
+
+
+
+
+
+ 
+#line 447 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+
+
+
+
+
+       
+#line 467 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+
+
+
+
+
+ 
+#line 487 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+
+
+
+
+
+ 
+#line 507 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+
+
+
+
+
+ 
+#line 527 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+#line 1 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+ 
+#line 29 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h"
+
+
+
+ 
+
+
+
+  
+
+ 
+
+
+
+ 
+   
+
+
+  
+typedef enum
+{
+  MEMORY0      = 0x00U,     
+  MEMORY1      = 0x01U      
+}HAL_DMA_MemoryTypeDef;
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+ 
+HAL_StatusTypeDef HAL_DMAEx_MultiBufferStart(DMA_HandleTypeDef *hdma, uint32_t SrcAddress, uint32_t DstAddress, uint32_t SecondMemAddress, uint32_t DataLength);
+HAL_StatusTypeDef HAL_DMAEx_MultiBufferStart_IT(DMA_HandleTypeDef *hdma, uint32_t SrcAddress, uint32_t DstAddress, uint32_t SecondMemAddress, uint32_t DataLength);
+HAL_StatusTypeDef HAL_DMAEx_ChangeMemory(DMA_HandleTypeDef *hdma, uint32_t Address, HAL_DMA_MemoryTypeDef memory);
+
+
+
+ 
+
+
+ 
+         
+ 
+
+
+
+ 
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+#line 640 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+HAL_StatusTypeDef HAL_DMA_Init(DMA_HandleTypeDef *hdma); 
+HAL_StatusTypeDef HAL_DMA_DeInit(DMA_HandleTypeDef *hdma);
+
+
+ 
+
+
+
+
+ 
+HAL_StatusTypeDef HAL_DMA_Start (DMA_HandleTypeDef *hdma, uint32_t SrcAddress, uint32_t DstAddress, uint32_t DataLength);
+HAL_StatusTypeDef HAL_DMA_Start_IT(DMA_HandleTypeDef *hdma, uint32_t SrcAddress, uint32_t DstAddress, uint32_t DataLength);
+HAL_StatusTypeDef HAL_DMA_Abort(DMA_HandleTypeDef *hdma);
+HAL_StatusTypeDef HAL_DMA_Abort_IT(DMA_HandleTypeDef *hdma);
+HAL_StatusTypeDef HAL_DMA_PollForTransfer(DMA_HandleTypeDef *hdma, HAL_DMA_LevelCompleteTypeDef CompleteLevel, uint32_t Timeout);
+void              HAL_DMA_IRQHandler(DMA_HandleTypeDef *hdma);
+HAL_StatusTypeDef HAL_DMA_CleanCallbacks(DMA_HandleTypeDef *hdma);
+HAL_StatusTypeDef HAL_DMA_RegisterCallback(DMA_HandleTypeDef *hdma, HAL_DMA_CallbackIDTypeDef CallbackID, void (* pCallback)(DMA_HandleTypeDef *_hdma));
+HAL_StatusTypeDef HAL_DMA_UnRegisterCallback(DMA_HandleTypeDef *hdma, HAL_DMA_CallbackIDTypeDef CallbackID);
+
+
+
+  
+
+
+
+
+ 
+HAL_DMA_StateTypeDef HAL_DMA_GetState(DMA_HandleTypeDef *hdma);
+uint32_t             HAL_DMA_GetError(DMA_HandleTypeDef *hdma);
+
+
+  
+
+
+  
+ 
+
+
+
+ 
+
+
+  
+
+ 
+
+
+
+ 
+#line 729 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+ 
+
+
+
+ 
+
+
+ 
+
+
+
+  
+
+
+
+ 
+
+
+
+
+
+
+
+#line 288 "../Core/Inc/stm32f4xx_hal_conf.h"
+
+
+#line 1 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+ 
+
+
+
+
+
+
+
+ 
+#line 28 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+
+
+
+ 
+
+
+
+  
+ 
+
+
+ 
+
+
+
+
+
+ 
+typedef struct
+{
+  uint8_t                Enable;                
+ 
+  uint8_t                Number;                
+ 
+  uint32_t               BaseAddress;            
+  uint8_t                Size;                  
+ 
+  uint8_t                SubRegionDisable;      
+          
+  uint8_t                TypeExtField;          
+                  
+  uint8_t                AccessPermission;      
+ 
+  uint8_t                DisableExec;           
+ 
+  uint8_t                IsShareable;           
+ 
+  uint8_t                IsCacheable;           
+ 
+  uint8_t                IsBufferable;          
+ 
+}MPU_Region_InitTypeDef;
+
+
+ 
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+#line 98 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+ 
+#line 211 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+
+
+ 
+   
+
+
+ 
+#line 224 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+
+
+ 
+
+
+
+ 
+#line 239 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+
+
+ 
+
+
+
+
+ 
+
+
+ 
+
+ 
+
+
+ 
+  
+
+
+ 
+ 
+void HAL_NVIC_SetPriorityGrouping(uint32_t PriorityGroup);
+void HAL_NVIC_SetPriority(IRQn_Type IRQn, uint32_t PreemptPriority, uint32_t SubPriority);
+void HAL_NVIC_EnableIRQ(IRQn_Type IRQn);
+void HAL_NVIC_DisableIRQ(IRQn_Type IRQn);
+void HAL_NVIC_SystemReset(void);
+uint32_t HAL_SYSTICK_Config(uint32_t TicksNumb);
+
+
+ 
+
+
+
+ 
+ 
+uint32_t HAL_NVIC_GetPriorityGrouping(void);
+void HAL_NVIC_GetPriority(IRQn_Type IRQn, uint32_t PriorityGroup, uint32_t* pPreemptPriority, uint32_t* pSubPriority);
+uint32_t HAL_NVIC_GetPendingIRQ(IRQn_Type IRQn);
+void HAL_NVIC_SetPendingIRQ(IRQn_Type IRQn);
+void HAL_NVIC_ClearPendingIRQ(IRQn_Type IRQn);
+uint32_t HAL_NVIC_GetActive(IRQn_Type IRQn);
+void HAL_SYSTICK_CLKSourceConfig(uint32_t CLKSource);
+void HAL_SYSTICK_IRQHandler(void);
+void HAL_SYSTICK_Callback(void);
+
+
+void HAL_MPU_Enable(uint32_t MPU_Control);
+void HAL_MPU_Disable(void);
+void HAL_MPU_EnableRegion(uint32_t RegionNumber);
+void HAL_MPU_DisableRegion(uint32_t RegionNumber);
+void HAL_MPU_ConfigRegion(MPU_Region_InitTypeDef *MPU_Init);
+
+void HAL_CORTEX_ClearEvent(void);
+
+
+ 
+
+
+
+ 
+
+ 
+ 
+ 
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 348 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+
+#line 357 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+
+#line 386 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+  
+
+
+
+ 
+  
+
+
+
+
+
+ 
+
+#line 292 "../Core/Inc/stm32f4xx_hal_conf.h"
+
+
+
+
+
+
+#line 1 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+ 
+#line 29 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+
+
+
+ 
+
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+ 
+typedef enum
+{
+  HAL_CAN_STATE_RESET             = 0x00U,   
+  HAL_CAN_STATE_READY             = 0x01U,   
+  HAL_CAN_STATE_LISTENING         = 0x02U,   
+  HAL_CAN_STATE_SLEEP_PENDING     = 0x03U,   
+  HAL_CAN_STATE_SLEEP_ACTIVE      = 0x04U,   
+  HAL_CAN_STATE_ERROR             = 0x05U    
+
+} HAL_CAN_StateTypeDef;
+
+
+
+ 
+typedef struct
+{
+  uint32_t Prescaler;                  
+ 
+
+  uint32_t Mode;                       
+ 
+
+  uint32_t SyncJumpWidth;              
+
+ 
+
+  uint32_t TimeSeg1;                   
+ 
+
+  uint32_t TimeSeg2;                   
+ 
+
+  FunctionalState TimeTriggeredMode;   
+ 
+
+  FunctionalState AutoBusOff;          
+ 
+
+  FunctionalState AutoWakeUp;          
+ 
+
+  FunctionalState AutoRetransmission;  
+ 
+
+  FunctionalState ReceiveFifoLocked;   
+ 
+
+  FunctionalState TransmitFifoPriority;
+ 
+
+} CAN_InitTypeDef;
+
+
+
+ 
+typedef struct
+{
+  uint32_t FilterIdHigh;          
+
+
+ 
+
+  uint32_t FilterIdLow;           
+
+
+ 
+
+  uint32_t FilterMaskIdHigh;      
+
+
+
+ 
+
+  uint32_t FilterMaskIdLow;       
+
+
+
+ 
+
+  uint32_t FilterFIFOAssignment;  
+ 
+
+  uint32_t FilterBank;            
+
+
+
+ 
+
+  uint32_t FilterMode;            
+ 
+
+  uint32_t FilterScale;           
+ 
+
+  uint32_t FilterActivation;      
+ 
+
+  uint32_t SlaveStartFilterBank;  
+
+
+
+
+ 
+
+} CAN_FilterTypeDef;
+
+
+
+ 
+typedef struct
+{
+  uint32_t StdId;    
+ 
+
+  uint32_t ExtId;    
+ 
+
+  uint32_t IDE;      
+ 
+
+  uint32_t RTR;      
+ 
+
+  uint32_t DLC;      
+ 
+
+  FunctionalState TransmitGlobalTime; 
+
+
+
+ 
+
+} CAN_TxHeaderTypeDef;
+
+
+
+ 
+typedef struct
+{
+  uint32_t StdId;    
+ 
+
+  uint32_t ExtId;    
+ 
+
+  uint32_t IDE;      
+ 
+
+  uint32_t RTR;      
+ 
+
+  uint32_t DLC;      
+ 
+
+  uint32_t Timestamp; 
+
+ 
+
+  uint32_t FilterMatchIndex; 
+ 
+
+} CAN_RxHeaderTypeDef;
+
+
+
+ 
+
+
+
+typedef struct
+
+{
+  CAN_TypeDef                 *Instance;                  
+
+  CAN_InitTypeDef             Init;                       
+
+  volatile HAL_CAN_StateTypeDef   State;                      
+
+  volatile uint32_t               ErrorCode;                 
+ 
+
+#line 246 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+} CAN_HandleTypeDef;
+
+#line 279 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+#line 315 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+ 
+#line 377 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+
+
+ 
+
+
+
+ 
+#line 392 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+ 
+ 
+#line 491 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+ 
+ 
+
+
+ 
+#line 527 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+
+ 
+#line 564 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+#line 603 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+
+ 
+
+ 
+HAL_StatusTypeDef HAL_CAN_Init(CAN_HandleTypeDef *hcan);
+HAL_StatusTypeDef HAL_CAN_DeInit(CAN_HandleTypeDef *hcan);
+void HAL_CAN_MspInit(CAN_HandleTypeDef *hcan);
+void HAL_CAN_MspDeInit(CAN_HandleTypeDef *hcan);
+
+#line 661 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+
+
+ 
+
+
+
+
+ 
+
+ 
+HAL_StatusTypeDef HAL_CAN_ConfigFilter(CAN_HandleTypeDef *hcan, const CAN_FilterTypeDef *sFilterConfig);
+
+
+
+ 
+
+
+
+
+ 
+
+ 
+HAL_StatusTypeDef HAL_CAN_Start(CAN_HandleTypeDef *hcan);
+HAL_StatusTypeDef HAL_CAN_Stop(CAN_HandleTypeDef *hcan);
+HAL_StatusTypeDef HAL_CAN_RequestSleep(CAN_HandleTypeDef *hcan);
+HAL_StatusTypeDef HAL_CAN_WakeUp(CAN_HandleTypeDef *hcan);
+uint32_t HAL_CAN_IsSleepActive(const CAN_HandleTypeDef *hcan);
+HAL_StatusTypeDef HAL_CAN_AddTxMessage(CAN_HandleTypeDef *hcan, const CAN_TxHeaderTypeDef *pHeader,
+                                       const uint8_t aData[], uint32_t *pTxMailbox);
+HAL_StatusTypeDef HAL_CAN_AbortTxRequest(CAN_HandleTypeDef *hcan, uint32_t TxMailboxes);
+uint32_t HAL_CAN_GetTxMailboxesFreeLevel(const CAN_HandleTypeDef *hcan);
+uint32_t HAL_CAN_IsTxMessagePending(const CAN_HandleTypeDef *hcan, uint32_t TxMailboxes);
+uint32_t HAL_CAN_GetTxTimestamp(const CAN_HandleTypeDef *hcan, uint32_t TxMailbox);
+HAL_StatusTypeDef HAL_CAN_GetRxMessage(CAN_HandleTypeDef *hcan, uint32_t RxFifo,
+                                       CAN_RxHeaderTypeDef *pHeader, uint8_t aData[]);
+uint32_t HAL_CAN_GetRxFifoFillLevel(const CAN_HandleTypeDef *hcan, uint32_t RxFifo);
+
+
+
+ 
+
+
+
+
+ 
+ 
+HAL_StatusTypeDef HAL_CAN_ActivateNotification(CAN_HandleTypeDef *hcan, uint32_t ActiveITs);
+HAL_StatusTypeDef HAL_CAN_DeactivateNotification(CAN_HandleTypeDef *hcan, uint32_t InactiveITs);
+void HAL_CAN_IRQHandler(CAN_HandleTypeDef *hcan);
+
+
+
+ 
+
+
+
+
+ 
+ 
+
+void HAL_CAN_TxMailbox0CompleteCallback(CAN_HandleTypeDef *hcan);
+void HAL_CAN_TxMailbox1CompleteCallback(CAN_HandleTypeDef *hcan);
+void HAL_CAN_TxMailbox2CompleteCallback(CAN_HandleTypeDef *hcan);
+void HAL_CAN_TxMailbox0AbortCallback(CAN_HandleTypeDef *hcan);
+void HAL_CAN_TxMailbox1AbortCallback(CAN_HandleTypeDef *hcan);
+void HAL_CAN_TxMailbox2AbortCallback(CAN_HandleTypeDef *hcan);
+void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan);
+void HAL_CAN_RxFifo0FullCallback(CAN_HandleTypeDef *hcan);
+void HAL_CAN_RxFifo1MsgPendingCallback(CAN_HandleTypeDef *hcan);
+void HAL_CAN_RxFifo1FullCallback(CAN_HandleTypeDef *hcan);
+void HAL_CAN_SleepCallback(CAN_HandleTypeDef *hcan);
+void HAL_CAN_WakeUpFromRxMsgCallback(CAN_HandleTypeDef *hcan);
+void HAL_CAN_ErrorCallback(CAN_HandleTypeDef *hcan);
+
+
+
+ 
+
+
+
+
+ 
+ 
+HAL_CAN_StateTypeDef HAL_CAN_GetState(const CAN_HandleTypeDef *hcan);
+uint32_t HAL_CAN_GetError(const CAN_HandleTypeDef *hcan);
+HAL_StatusTypeDef HAL_CAN_ResetError(CAN_HandleTypeDef *hcan);
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+#line 837 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+
+
+
+ 
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+#line 300 "../Core/Inc/stm32f4xx_hal_conf.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 1 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+ 
+#line 28 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h"
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+typedef enum
+{
+  FLASH_PROC_NONE = 0U,
+  FLASH_PROC_SECTERASE,
+  FLASH_PROC_MASSERASE,
+  FLASH_PROC_PROGRAM
+} FLASH_ProcedureTypeDef;
+
+
+
+ 
+typedef struct
+{
+  volatile FLASH_ProcedureTypeDef ProcedureOnGoing;    
+
+  volatile uint32_t               NbSectorsToErase;    
+
+  volatile uint8_t                VoltageForErase;     
+
+  volatile uint32_t               Sector;              
+
+  volatile uint32_t               Bank;                
+
+  volatile uint32_t               Address;             
+
+  HAL_LockTypeDef             Lock;                
+
+  volatile uint32_t               ErrorCode;           
+
+} FLASH_ProcessTypeDef;
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+#line 95 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h"
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+#line 124 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h"
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+ 
+#line 1 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+ 
+#line 28 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+typedef struct
+{
+  uint32_t TypeErase;   
+ 
+
+  uint32_t Banks;       
+ 
+
+  uint32_t Sector;      
+ 
+
+  uint32_t NbSectors;   
+ 
+
+  uint32_t VoltageRange;
+ 
+
+} FLASH_EraseInitTypeDef;
+
+
+
+ 
+typedef struct
+{
+  uint32_t OptionType;   
+ 
+
+  uint32_t WRPState;     
+ 
+
+  uint32_t WRPSector;         
+ 
+
+  uint32_t Banks;        
+ 
+
+  uint32_t RDPLevel;     
+ 
+
+  uint32_t BORLevel;     
+ 
+
+  uint8_t  USERConfig;    
+
+} FLASH_OBProgramInitTypeDef;
+
+
+
+ 
+#line 131 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+#line 247 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+
+
+
+ 
+
+
+
+
+
+
+#line 264 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+
+
+ 
+
+
+
+ 
+ 
+#line 291 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+ 
+
+ 
+
+
+
+
+
+#line 309 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+ 
+
+
+
+ 
+
+
+
+
+ 
+#line 325 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+
+#line 334 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+#line 354 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+
+
+ 
+
+
+
+ 
+ 
+#line 389 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+ 
+
+ 
+#line 410 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+ 
+
+ 
+#line 428 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+ 
+
+ 
+#line 439 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+ 
+
+ 
+#line 449 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+ 
+
+ 
+#line 462 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+#line 500 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+ 
+
+ 
+#line 522 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+ 
+
+ 
+#line 541 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+ 
+
+ 
+#line 553 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+ 
+
+ 
+#line 564 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+ 
+
+ 
+#line 578 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+ 
+
+
+ 
+
+
+
+ 
+ 
+#line 615 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+ 
+
+ 
+#line 637 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+ 
+
+ 
+#line 649 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+ 
+
+ 
+#line 660 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+ 
+
+ 
+#line 675 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+#line 706 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+
+
+ 
+
+
+
+ 
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+ 
+HAL_StatusTypeDef HAL_FLASHEx_Erase(FLASH_EraseInitTypeDef *pEraseInit, uint32_t *SectorError);
+HAL_StatusTypeDef HAL_FLASHEx_Erase_IT(FLASH_EraseInitTypeDef *pEraseInit);
+HAL_StatusTypeDef HAL_FLASHEx_OBProgram(FLASH_OBProgramInitTypeDef *pOBInit);
+void              HAL_FLASHEx_OBGetConfig(FLASH_OBProgramInitTypeDef *pOBInit);
+
+#line 742 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+ 
+ 
+ 
+
+
+ 
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 847 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+
+
+
+
+
+
+
+#line 861 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+
+#line 881 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+
+#line 896 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+
+
+
+
+
+
+
+#line 911 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+
+#line 926 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+
+#line 937 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+
+#line 947 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 966 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 1032 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+void FLASH_Erase_Sector(uint32_t Sector, uint8_t VoltageRange);
+void FLASH_FlushCaches(void);
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+#line 296 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h"
+#line 1 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+#line 73 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h"
+
+
+
+
+#line 297 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h"
+
+ 
+
+
+ 
+
+
+ 
+ 
+HAL_StatusTypeDef HAL_FLASH_Program(uint32_t TypeProgram, uint32_t Address, uint64_t Data);
+HAL_StatusTypeDef HAL_FLASH_Program_IT(uint32_t TypeProgram, uint32_t Address, uint64_t Data);
+ 
+void HAL_FLASH_IRQHandler(void);
+ 
+void HAL_FLASH_EndOfOperationCallback(uint32_t ReturnValue);
+void HAL_FLASH_OperationErrorCallback(uint32_t ReturnValue);
+
+
+ 
+
+
+
+ 
+ 
+HAL_StatusTypeDef HAL_FLASH_Unlock(void);
+HAL_StatusTypeDef HAL_FLASH_Lock(void);
+HAL_StatusTypeDef HAL_FLASH_OB_Unlock(void);
+HAL_StatusTypeDef HAL_FLASH_OB_Lock(void);
+ 
+HAL_StatusTypeDef HAL_FLASH_OB_Launch(void);
+
+
+ 
+
+
+
+ 
+ 
+uint32_t HAL_FLASH_GetError(void);
+HAL_StatusTypeDef FLASH_WaitForLastOperation(uint32_t Timeout);
+
+
+ 
+
+
+
+ 
+ 
+ 
+
+
+ 
+
+
+
+ 
+ 
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+#line 336 "../Core/Inc/stm32f4xx_hal_conf.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 1 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+ 
+
+
+
+
+
+
+
+ 
+#line 28 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h"
+
+
+
+ 
+
+
+
+  
+
+ 
+
+
+
+ 
+   
+
+
+ 
+typedef struct
+{
+  uint32_t PVDLevel;   
+ 
+
+  uint32_t Mode;      
+ 
+}PWR_PVDTypeDef;
+
+
+
+ 
+
+ 
+
+
+ 
+  
+
+
+ 
+
+
+
+ 
+
+
+
+  
+#line 84 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h"
+
+
+    
+ 
+
+
+ 
+#line 98 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h"
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+    
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+  
+  
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+ 
+#line 1 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+ 
+
+
+
+
+
+
+
+ 
+#line 28 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h"
+
+
+
+ 
+
+
+
+  
+
+  
+ 
+
+
+ 
+#line 64 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h"
+
+
+
+ 
+#line 78 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h"
+
+
+ 
+#line 97 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h"
+
+
+
+  
+  
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+#line 143 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h"
+
+#line 191 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h"
+
+
+ 
+
+ 
+
+
+ 
+ 
+
+
+ 
+void HAL_PWREx_EnableFlashPowerDown(void);
+void HAL_PWREx_DisableFlashPowerDown(void); 
+HAL_StatusTypeDef HAL_PWREx_EnableBkUpReg(void);
+HAL_StatusTypeDef HAL_PWREx_DisableBkUpReg(void); 
+uint32_t HAL_PWREx_GetVoltageRange(void);
+HAL_StatusTypeDef HAL_PWREx_ControlVoltageScaling(uint32_t VoltageScaling);
+
+#line 219 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h"
+
+#line 226 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h"
+
+
+
+ 
+
+
+
+ 
+ 
+ 
+ 
+
+
+ 
+
+
+
+ 
+ 
+ 
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+    
+ 
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+
+   
+ 
+ 
+
+
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+#line 308 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h"
+
+#line 319 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h"
+
+
+ 
+
+
+
+ 
+
+
+
+  
+
+
+
+ 
+  
+
+
+
+
+
+#line 276 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h"
+
+ 
+
+
+ 
+  
+
+
+ 
+ 
+void HAL_PWR_DeInit(void);
+void HAL_PWR_EnableBkUpAccess(void);
+void HAL_PWR_DisableBkUpAccess(void);
+
+
+ 
+
+
+
+ 
+ 
+ 
+void HAL_PWR_ConfigPVD(PWR_PVDTypeDef *sConfigPVD);
+void HAL_PWR_EnablePVD(void);
+void HAL_PWR_DisablePVD(void);
+
+ 
+void HAL_PWR_EnableWakeUpPin(uint32_t WakeUpPinx);
+void HAL_PWR_DisableWakeUpPin(uint32_t WakeUpPinx);
+
+ 
+void HAL_PWR_EnterSTOPMode(uint32_t Regulator, uint8_t STOPEntry);
+void HAL_PWR_EnterSLEEPMode(uint32_t Regulator, uint8_t SLEEPEntry);
+void HAL_PWR_EnterSTANDBYMode(void);
+
+ 
+void HAL_PWR_PVD_IRQHandler(void);
+void HAL_PWR_PVDCallback(void);
+
+ 
+void HAL_PWR_EnableSleepOnExit(void);
+void HAL_PWR_DisableSleepOnExit(void);
+void HAL_PWR_EnableSEVOnPend(void);
+void HAL_PWR_DisableSEVOnPend(void);
+
+
+ 
+
+
+
+ 
+
+ 
+ 
+ 
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+ 
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+ 
+ 
+
+
+
+
+ 
+
+
+
+ 
+ 
+
+
+ 
+
+
+
+ 
+#line 407 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h"
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+  
+
+
+
+ 
+  
+
+
+
+
+
+#line 384 "../Core/Inc/stm32f4xx_hal_conf.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 1 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+ 
+#line 29 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+typedef struct
+{
+  uint32_t Mode;                
+ 
+
+  uint32_t Direction;           
+ 
+
+  uint32_t DataSize;            
+ 
+
+  uint32_t CLKPolarity;         
+ 
+
+  uint32_t CLKPhase;            
+ 
+
+  uint32_t NSS;                 
+
+ 
+
+  uint32_t BaudRatePrescaler;   
+
+
+
+ 
+
+  uint32_t FirstBit;            
+ 
+
+  uint32_t TIMode;              
+ 
+
+  uint32_t CRCCalculation;      
+ 
+
+  uint32_t CRCPolynomial;       
+ 
+} SPI_InitTypeDef;
+
+
+
+ 
+typedef enum
+{
+  HAL_SPI_STATE_RESET      = 0x00U,     
+  HAL_SPI_STATE_READY      = 0x01U,     
+  HAL_SPI_STATE_BUSY       = 0x02U,     
+  HAL_SPI_STATE_BUSY_TX    = 0x03U,     
+  HAL_SPI_STATE_BUSY_RX    = 0x04U,     
+  HAL_SPI_STATE_BUSY_TX_RX = 0x05U,     
+  HAL_SPI_STATE_ERROR      = 0x06U,     
+  HAL_SPI_STATE_ABORT      = 0x07U      
+} HAL_SPI_StateTypeDef;
+
+
+
+ 
+typedef struct __SPI_HandleTypeDef
+{
+  SPI_TypeDef                *Instance;       
+
+  SPI_InitTypeDef            Init;            
+
+  const uint8_t              *pTxBuffPtr;     
+
+  uint16_t                   TxXferSize;      
+
+  volatile uint16_t              TxXferCount;     
+
+  uint8_t                    *pRxBuffPtr;     
+
+  uint16_t                   RxXferSize;      
+
+  volatile uint16_t              RxXferCount;     
+
+  void (*RxISR)(struct __SPI_HandleTypeDef *hspi);    
+
+  void (*TxISR)(struct __SPI_HandleTypeDef *hspi);    
+
+  DMA_HandleTypeDef          *hdmatx;         
+
+  DMA_HandleTypeDef          *hdmarx;         
+
+  HAL_LockTypeDef            Lock;            
+
+  volatile HAL_SPI_StateTypeDef  State;           
+
+  volatile uint32_t              ErrorCode;       
+
+#line 149 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
+} SPI_HandleTypeDef;
+
+#line 176 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+#line 199 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+ 
+#line 270 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+ 
+#line 323 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+
+
+ 
+#line 351 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+#line 424 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
+
+
+
+
+
+ 
+#line 437 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
+
+
+
+
+
+ 
+#line 449 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+#line 602 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+ 
+HAL_StatusTypeDef HAL_SPI_Init(SPI_HandleTypeDef *hspi);
+HAL_StatusTypeDef HAL_SPI_DeInit(SPI_HandleTypeDef *hspi);
+void HAL_SPI_MspInit(SPI_HandleTypeDef *hspi);
+void HAL_SPI_MspDeInit(SPI_HandleTypeDef *hspi);
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+ 
+HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+HAL_StatusTypeDef HAL_SPI_Receive(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+HAL_StatusTypeDef HAL_SPI_TransmitReceive(SPI_HandleTypeDef *hspi, const uint8_t *pTxData, uint8_t *pRxData,
+                                          uint16_t Size, uint32_t Timeout);
+HAL_StatusTypeDef HAL_SPI_Transmit_IT(SPI_HandleTypeDef *hspi, const uint8_t *pData, uint16_t Size);
+HAL_StatusTypeDef HAL_SPI_Receive_IT(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size);
+HAL_StatusTypeDef HAL_SPI_TransmitReceive_IT(SPI_HandleTypeDef *hspi, const uint8_t *pTxData, uint8_t *pRxData,
+                                             uint16_t Size);
+HAL_StatusTypeDef HAL_SPI_Transmit_DMA(SPI_HandleTypeDef *hspi, const uint8_t *pData, uint16_t Size);
+HAL_StatusTypeDef HAL_SPI_Receive_DMA(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size);
+HAL_StatusTypeDef HAL_SPI_TransmitReceive_DMA(SPI_HandleTypeDef *hspi, const uint8_t *pTxData, uint8_t *pRxData,
+                                              uint16_t Size);
+HAL_StatusTypeDef HAL_SPI_DMAPause(SPI_HandleTypeDef *hspi);
+HAL_StatusTypeDef HAL_SPI_DMAResume(SPI_HandleTypeDef *hspi);
+HAL_StatusTypeDef HAL_SPI_DMAStop(SPI_HandleTypeDef *hspi);
+ 
+HAL_StatusTypeDef HAL_SPI_Abort(SPI_HandleTypeDef *hspi);
+HAL_StatusTypeDef HAL_SPI_Abort_IT(SPI_HandleTypeDef *hspi);
+
+void HAL_SPI_IRQHandler(SPI_HandleTypeDef *hspi);
+void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi);
+void HAL_SPI_RxCpltCallback(SPI_HandleTypeDef *hspi);
+void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi);
+void HAL_SPI_TxHalfCpltCallback(SPI_HandleTypeDef *hspi);
+void HAL_SPI_RxHalfCpltCallback(SPI_HandleTypeDef *hspi);
+void HAL_SPI_TxRxHalfCpltCallback(SPI_HandleTypeDef *hspi);
+void HAL_SPI_ErrorCallback(SPI_HandleTypeDef *hspi);
+void HAL_SPI_AbortCpltCallback(SPI_HandleTypeDef *hspi);
+
+
+ 
+
+
+
+ 
+ 
+HAL_SPI_StateTypeDef HAL_SPI_GetState(const SPI_HandleTypeDef *hspi);
+uint32_t             HAL_SPI_GetError(const SPI_HandleTypeDef *hspi);
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+#line 404 "../Core/Inc/stm32f4xx_hal_conf.h"
+
+
+
+
+
+
+#line 1 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+ 
+#line 29 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+typedef struct
+{
+  uint32_t BaudRate;                  
+
+
+
+ 
+
+  uint32_t WordLength;                
+ 
+
+  uint32_t StopBits;                  
+ 
+
+  uint32_t Parity;                    
+
+
+
+
+ 
+
+  uint32_t Mode;                      
+ 
+
+  uint32_t HwFlowCtl;                 
+ 
+
+  uint32_t OverSampling;              
+ 
+} UART_InitTypeDef;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+typedef enum
+{
+  HAL_UART_STATE_RESET             = 0x00U,    
+ 
+  HAL_UART_STATE_READY             = 0x20U,    
+ 
+  HAL_UART_STATE_BUSY              = 0x24U,    
+ 
+  HAL_UART_STATE_BUSY_TX           = 0x21U,    
+ 
+  HAL_UART_STATE_BUSY_RX           = 0x22U,    
+ 
+  HAL_UART_STATE_BUSY_TX_RX        = 0x23U,    
+
+ 
+  HAL_UART_STATE_TIMEOUT           = 0xA0U,    
+ 
+  HAL_UART_STATE_ERROR             = 0xE0U     
+ 
+} HAL_UART_StateTypeDef;
+
+
+
+
+
+
+
+ 
+typedef uint32_t HAL_UART_RxTypeTypeDef;
+
+
+
+
+
+
+
+
+
+ 
+typedef uint32_t HAL_UART_RxEventTypeTypeDef;
+
+
+
+ 
+typedef struct __UART_HandleTypeDef
+{
+  USART_TypeDef                 *Instance;         
+
+  UART_InitTypeDef              Init;              
+
+  const uint8_t                 *pTxBuffPtr;       
+
+  uint16_t                      TxXferSize;        
+
+  volatile uint16_t                 TxXferCount;       
+
+  uint8_t                       *pRxBuffPtr;       
+
+  uint16_t                      RxXferSize;        
+
+  volatile uint16_t                 RxXferCount;       
+
+  volatile HAL_UART_RxTypeTypeDef ReceptionType;       
+
+  volatile HAL_UART_RxEventTypeTypeDef RxEventType;    
+
+  DMA_HandleTypeDef             *hdmatx;           
+
+  DMA_HandleTypeDef             *hdmarx;           
+
+  HAL_LockTypeDef               Lock;              
+
+  volatile HAL_UART_StateTypeDef    gState;           
+
+ 
+
+  volatile HAL_UART_StateTypeDef    RxState;          
+ 
+
+  volatile uint32_t                 ErrorCode;         
+
+#line 212 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+
+} UART_HandleTypeDef;
+
+#line 243 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+#line 265 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+ 
+#line 369 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+
+
+
+ 
+#line 444 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+#line 509 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+
+ 
+HAL_StatusTypeDef HAL_UART_Init(UART_HandleTypeDef *huart);
+HAL_StatusTypeDef HAL_HalfDuplex_Init(UART_HandleTypeDef *huart);
+HAL_StatusTypeDef HAL_LIN_Init(UART_HandleTypeDef *huart, uint32_t BreakDetectLength);
+HAL_StatusTypeDef HAL_MultiProcessor_Init(UART_HandleTypeDef *huart, uint8_t Address, uint32_t WakeUpMethod);
+HAL_StatusTypeDef HAL_UART_DeInit(UART_HandleTypeDef *huart);
+void HAL_UART_MspInit(UART_HandleTypeDef *huart);
+void HAL_UART_MspDeInit(UART_HandleTypeDef *huart);
+
+ 
+#line 735 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+
+
+
+ 
+
+
+
+ 
+
+ 
+HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+HAL_StatusTypeDef HAL_UART_Receive(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+HAL_StatusTypeDef HAL_UART_Transmit_IT(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size);
+HAL_StatusTypeDef HAL_UART_Receive_IT(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+HAL_StatusTypeDef HAL_UART_Transmit_DMA(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size);
+HAL_StatusTypeDef HAL_UART_Receive_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+HAL_StatusTypeDef HAL_UART_DMAPause(UART_HandleTypeDef *huart);
+HAL_StatusTypeDef HAL_UART_DMAResume(UART_HandleTypeDef *huart);
+HAL_StatusTypeDef HAL_UART_DMAStop(UART_HandleTypeDef *huart);
+
+HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint16_t *RxLen,
+                                           uint32_t Timeout);
+HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_IT(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+
+HAL_UART_RxEventTypeTypeDef HAL_UARTEx_GetRxEventType(UART_HandleTypeDef *huart);
+
+ 
+HAL_StatusTypeDef HAL_UART_Abort(UART_HandleTypeDef *huart);
+HAL_StatusTypeDef HAL_UART_AbortTransmit(UART_HandleTypeDef *huart);
+HAL_StatusTypeDef HAL_UART_AbortReceive(UART_HandleTypeDef *huart);
+HAL_StatusTypeDef HAL_UART_Abort_IT(UART_HandleTypeDef *huart);
+HAL_StatusTypeDef HAL_UART_AbortTransmit_IT(UART_HandleTypeDef *huart);
+HAL_StatusTypeDef HAL_UART_AbortReceive_IT(UART_HandleTypeDef *huart);
+
+void HAL_UART_IRQHandler(UART_HandleTypeDef *huart);
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart);
+void HAL_UART_TxHalfCpltCallback(UART_HandleTypeDef *huart);
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart);
+void HAL_UART_RxHalfCpltCallback(UART_HandleTypeDef *huart);
+void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart);
+void HAL_UART_AbortCpltCallback(UART_HandleTypeDef *huart);
+void HAL_UART_AbortTransmitCpltCallback(UART_HandleTypeDef *huart);
+void HAL_UART_AbortReceiveCpltCallback(UART_HandleTypeDef *huart);
+
+void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size);
+
+
+
+ 
+
+
+
+ 
+ 
+HAL_StatusTypeDef HAL_LIN_SendBreak(UART_HandleTypeDef *huart);
+HAL_StatusTypeDef HAL_MultiProcessor_EnterMuteMode(UART_HandleTypeDef *huart);
+HAL_StatusTypeDef HAL_MultiProcessor_ExitMuteMode(UART_HandleTypeDef *huart);
+HAL_StatusTypeDef HAL_HalfDuplex_EnableTransmitter(UART_HandleTypeDef *huart);
+HAL_StatusTypeDef HAL_HalfDuplex_EnableReceiver(UART_HandleTypeDef *huart);
+
+
+ 
+
+
+
+ 
+ 
+HAL_UART_StateTypeDef HAL_UART_GetState(const UART_HandleTypeDef *huart);
+uint32_t              HAL_UART_GetError(const UART_HandleTypeDef *huart);
+
+
+ 
+
+
+
+ 
+ 
+ 
+ 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+ 
+#line 859 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+ 
+
+
+ 
+
+HAL_StatusTypeDef UART_Start_Receive_IT(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+HAL_StatusTypeDef UART_Start_Receive_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+#line 412 "../Core/Inc/stm32f4xx_hal_conf.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+#line 490 "../Core/Inc/stm32f4xx_hal_conf.h"
+
+
+
+
+
+#line 30 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+
+
+
+ 
+
+
+
+  
+
+ 
+ 
+
+
+
+ 
+
+
+
+ 
+typedef enum
+{
+  HAL_TICK_FREQ_10HZ         = 100U,
+  HAL_TICK_FREQ_100HZ        = 10U,
+  HAL_TICK_FREQ_1KHZ         = 1U,
+  HAL_TICK_FREQ_DEFAULT      = HAL_TICK_FREQ_1KHZ
+} HAL_TickFreqTypeDef;
+
+
+ 
+
+
+
+ 
+   
+ 
+
+
+ 
+
+
+ 
+#line 93 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+
+#line 116 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+#line 155 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+
+#line 185 "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+extern volatile uint32_t uwTick;
+extern uint32_t uwTickPrio;
+extern HAL_TickFreqTypeDef uwTickFreq;
+
+
+ 
+
+ 
+
+
+ 
+
+
+ 
+ 
+HAL_StatusTypeDef HAL_Init(void);
+HAL_StatusTypeDef HAL_DeInit(void);
+void HAL_MspInit(void);
+void HAL_MspDeInit(void);
+HAL_StatusTypeDef HAL_InitTick (uint32_t TickPriority);
+
+
+ 
+
+
+
+ 
+ 
+void HAL_IncTick(void);
+void HAL_Delay(uint32_t Delay);
+uint32_t HAL_GetTick(void);
+uint32_t HAL_GetTickPrio(void);
+HAL_StatusTypeDef HAL_SetTickFreq(HAL_TickFreqTypeDef Freq);
+HAL_TickFreqTypeDef HAL_GetTickFreq(void);
+void HAL_SuspendTick(void);
+void HAL_ResumeTick(void);
+uint32_t HAL_GetHalVersion(void);
+uint32_t HAL_GetREVID(void);
+uint32_t HAL_GetDEVID(void);
+void HAL_DBGMCU_EnableDBGSleepMode(void);
+void HAL_DBGMCU_DisableDBGSleepMode(void);
+void HAL_DBGMCU_EnableDBGStopMode(void);
+void HAL_DBGMCU_DisableDBGStopMode(void);
+void HAL_DBGMCU_EnableDBGStandbyMode(void);
+void HAL_DBGMCU_DisableDBGStandbyMode(void);
+void HAL_EnableCompensationCell(void);
+void HAL_DisableCompensationCell(void);
+uint32_t HAL_GetUIDw0(void);
+uint32_t HAL_GetUIDw1(void);
+uint32_t HAL_GetUIDw2(void);
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+ 
+ 
+
+
+ 
+
+
+ 
+ 
+
+
+ 
+
+
+ 
+ 
+ 
+
+
+ 
+
+
+
+  
+  
+
+
+
+
+
+
+
+#line 31 "../Core/Inc/main.h"
+
+ 
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+void Error_Handler(void);
+
+ 
+
+ 
+
+ 
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+#line 3 "../user/BMI088Middleware.c"
+
+extern SPI_HandleTypeDef hspi1;
+
+void BMI088_GPIO_init(void)
+{
+
+}
+
+void BMI088_com_init(void)
+{
+
+
+}
+
+void BMI088_delay_ms(uint16_t ms)
+{
+    while(ms--)
+    {
+        BMI088_delay_us(1000);
+    }
+}
+
+void BMI088_delay_us(uint16_t us)
+{
+
+    uint32_t ticks = 0;
+    uint32_t told = 0;
+    uint32_t tnow = 0;
+    uint32_t tcnt = 0;
+    uint32_t reload = 0;
+    reload = ((SysTick_Type *) ((0xE000E000UL) + 0x0010UL) )->LOAD;
+    ticks = us * 168;
+    told = ((SysTick_Type *) ((0xE000E000UL) + 0x0010UL) )->VAL;
+    while (1)
+    {
+        tnow = ((SysTick_Type *) ((0xE000E000UL) + 0x0010UL) )->VAL;
+        if (tnow != told)
+        {
+            if (tnow < told)
+            {
+                tcnt += told - tnow;
+            }
+            else
+            {
+                tcnt += reload - tnow + told;
+            }
+            told = tnow;
+            if (tcnt >= ticks)
+            {
+                break;
+            }
+        }
+    }
+
+
+}
+
+
+
+
+void BMI088_ACCEL_NS_L(void)
+{
+    HAL_GPIO_WritePin(((GPIO_TypeDef *) ((0x40000000UL + 0x00020000UL) + 0x0000UL)), ((uint16_t)0x0010), GPIO_PIN_RESET);
+}
+void BMI088_ACCEL_NS_H(void)
+{
+    HAL_GPIO_WritePin(((GPIO_TypeDef *) ((0x40000000UL + 0x00020000UL) + 0x0000UL)), ((uint16_t)0x0010), GPIO_PIN_SET);
+}
+
+void BMI088_GYRO_NS_L(void)
+{
+    HAL_GPIO_WritePin(((GPIO_TypeDef *) ((0x40000000UL + 0x00020000UL) + 0x0400UL)), ((uint16_t)0x0001), GPIO_PIN_RESET);
+}
+void BMI088_GYRO_NS_H(void)
+{
+    HAL_GPIO_WritePin(((GPIO_TypeDef *) ((0x40000000UL + 0x00020000UL) + 0x0400UL)), ((uint16_t)0x0001), GPIO_PIN_SET);
+}
+
+uint8_t BMI088_read_write_byte(uint8_t txdata)
+{
+    uint8_t rx_data;
+    HAL_SPI_TransmitReceive(&hspi1, &txdata, &rx_data, 1, 1000);
+    return rx_data;
+}
+

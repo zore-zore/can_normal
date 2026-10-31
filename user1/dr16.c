@@ -143,7 +143,7 @@ uint8_t Dr16_Is_Online(void)
     return dr16_online;
 }
 
-/* 归一化：轴值除以 660，保留两位小数，第三位四舍五入；小于 0.5% 自然归零 */
+/* 归一化：轴值除以 660，保留两位，第三位四舍五入；增加死区处理 */
 
 static int32_t dr16_normalize_centi(int16_t ch)
 {
@@ -153,11 +153,11 @@ static int32_t dr16_normalize_centi(int16_t ch)
     magnitude = (ch < 0) ? -(int32_t)ch : (int32_t)ch;
     centi = (magnitude * 100 + (DR16_CH_RANGE / 2)) / DR16_CH_RANGE;
 
-    if (centi > 100)
+    if (centi > 100)  //死区
     {
         centi = 100;
     }
-    if (centi < 4)
+    if (centi < 5)
     {
         centi = 0;
     } 

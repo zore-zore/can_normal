@@ -3,10 +3,10 @@
 #include "CAN_receive.h"
 #include "pid.h"
 
-#define SPEED_CTRL_MAX_RPM      1000  //摇杆推到底时的目标转子转速，单位：转/分。因素之一
-#define SPEED_CTRL_CURRENT_MAX  1000  //PID 输出的电流上限，16384 对应 20A，单位：mA。因素之一
+#define SPEED_CTRL_MAX_RPM      1300  //摇杆推到底时的目标转子转速，单位：转/分。因素之一
+#define SPEED_CTRL_CURRENT_MAX  1500  //PID 输出的电流上限，16384 对应 20A，1 个单位 ≈ 1.22 mA，单位：mA。因素之一
 #define SPEED_CTRL_IOUT_MAX     500   //积分项上限，防止积分饱和，约 0.61A
-#define SPEED_CTRL_DT_S         0.001f
+#define SPEED_CTRL_DT_S         0.001f  
 
 static const fp32 speed_ctrl_pid_param[3] = {10.0f, 200.0f, 0.005f};  
 //PID 参数，顺序为 Kp、Ki、Kd。Ki 的单位是 1/秒，Kd 的单位是秒，初始化时按采样周期换算
@@ -62,8 +62,8 @@ void Speed_Ctrl_Update(const int32_t mix[4])
         }
 
         current[i] = (int16_t)PID_calc(&speed_ctrl_pid[i],
-                                       (fp32)(measure->speed_rpm * speed_ctrl_sign[i]),
-                                       (fp32)target_rpm);
+                                       (fp32)(measure->speed_rpm * speed_ctrl_sign[i]),  // 反馈
+                                       (fp32)target_rpm);  // 目标值
     }
 
     CAN_cmd_chassis(current[0], current[1], current[2], current[3]);

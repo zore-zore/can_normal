@@ -75,7 +75,7 @@ void MX_USART3_UART_Init(void)
   /* USER CODE BEGIN USART3_Init 1 */
 
   /* USER CODE END USART3_Init 1 */
-  huart3.Instance = USART3;
+  huart3.Instance = USART3;   //stm32配置的遥控器环境
   huart3.Init.BaudRate = 100000;
   huart3.Init.WordLength = UART_WORDLENGTH_8B;
   huart3.Init.StopBits = UART_STOPBITS_1;

@@ -1,11 +1,33 @@
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\Keil_v5\Arm\Core\ARM\AC5\Bin'
 Build target 'can_normal'
-Note: source file '..\user\bsp_can.c' - object file renamed from 'can_normal\bsp_can.o' to 'can_normal\bsp_can_1.o'.Note: source file '..\user\bsp_rc.c' - object file renamed from 'can_normal\bsp_rc.o' to 'can_normal\bsp_rc_1.o'.Note: source file '..\user\CAN_receive.c' - object file renamed from 'can_normal\CAN_receive.o' to 'can_normal\can_receive_1.o'.Note: source file '..\user\pid.c' - object file renamed from 'can_normal\pid.o' to 'can_normal\pid_1.o'.Note: source file '..\user\remote_control.c' - object file renamed from 'can_normal\remote_control.o' to 'can_normal\remote_control_1.o'.compiling speed_ctrl.c...
-../user/pid.h(98): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\user1\speed_ctrl.c: 1 warning, 0 errors
-linking...
-Program Size: Code=12416 RO-data=500 RW-data=68 ZI-data=2988  
-FromELF: creating hex file...
-"can_normal\can_normal.axf" - 0 Error(s), 1 Warning(s).
-Build Time Elapsed:  00:00:01
+Note: source file '..\user\bsp_can.c' - object file renamed from 'can_normal\bsp_can.o' to 'can_normal\bsp_can_1.o'.Note: source file '..\user\bsp_rc.c' - object file renamed from 'can_normal\bsp_rc.o' to 'can_normal\bsp_rc_1.o'.Note: source file '..\user\CAN_receive.c' - object file renamed from 'can_normal\CAN_receive.o' to 'can_normal\can_receive_1.o'.Note: source file '..\user\pid.c' - object file renamed from 'can_normal\pid.o' to 'can_normal\pid_1.o'.Note: source file '..\user\remote_control.c' - object file renamed from 'can_normal\remote_control.o' to 'can_normal\remote_control_1.o'.compiling BMI088Middleware.c...
+..\user\BMI088Middleware.c(65): error:  #20: identifier "CS1_ACCEL_GPIO_Port" is undefined
+      HAL_GPIO_WritePin(CS1_ACCEL_GPIO_Port, CS1_ACCEL_Pin, GPIO_PIN_RESET);
+..\user\BMI088Middleware.c(65): error:  #20: identifier "CS1_ACCEL_Pin" is undefined
+      HAL_GPIO_WritePin(CS1_ACCEL_GPIO_Port, CS1_ACCEL_Pin, GPIO_PIN_RESET);
+..\user\BMI088Middleware.c(69): error:  #20: identifier "CS1_ACCEL_GPIO_Port" is undefined
+      HAL_GPIO_WritePin(CS1_ACCEL_GPIO_Port, CS1_ACCEL_Pin, GPIO_PIN_SET);
+..\user\BMI088Middleware.c(69): error:  #20: identifier "CS1_ACCEL_Pin" is undefined
+      HAL_GPIO_WritePin(CS1_ACCEL_GPIO_Port, CS1_ACCEL_Pin, GPIO_PIN_SET);
+..\user\BMI088Middleware.c(74): error:  #20: identifier "CS1_GYRO_GPIO_Port" is undefined
+      HAL_GPIO_WritePin(CS1_GYRO_GPIO_Port, CS1_GYRO_Pin, GPIO_PIN_RESET);
+..\user\BMI088Middleware.c(74): error:  #20: identifier "CS1_GYRO_Pin" is undefined
+      HAL_GPIO_WritePin(CS1_GYRO_GPIO_Port, CS1_GYRO_Pin, GPIO_PIN_RESET);
+..\user\BMI088Middleware.c(78): error:  #20: identifier "CS1_GYRO_GPIO_Port" is undefined
+      HAL_GPIO_WritePin(CS1_GYRO_GPIO_Port, CS1_GYRO_Pin, GPIO_PIN_SET);
+..\user\BMI088Middleware.c(78): error:  #20: identifier "CS1_GYRO_Pin" is undefined
+      HAL_GPIO_WritePin(CS1_GYRO_GPIO_Port, CS1_GYRO_Pin, GPIO_PIN_SET);
+..\user\BMI088Middleware.c: 0 warnings, 8 errors
+compiling BMI088driver.c...
+..\user\BMI088driver.h(94): error:  #20: identifier "bool_t" is undefined
+  extern bool_t bmi088_accel_init(void);
+..\user\BMI088driver.h(95): error:  #20: identifier "bool_t" is undefined
+  extern bool_t bmi088_gyro_init(void);
+..\user\BMI088driver.c(101): error:  #20: identifier "bool_t" is undefined
+  bool_t bmi088_accel_init(void)
+..\user\BMI088driver.c(146): error:  #20: identifier "bool_t" is undefined
+  bool_t bmi088_gyro_init(void)
+..\user\BMI088driver.c: 0 warnings, 4 errors
+"can_normal\can_normal.axf" - 12 Error(s), 0 Warning(s).
+Target not created.
+Build Time Elapsed:  00:00:02
